@@ -1,6 +1,5 @@
 import {Button} from '@ant-design/react-native';
 import {StackScreenProps} from '@react-navigation/stack';
-import React from 'react';
 import {StyleSheet, Text} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 
