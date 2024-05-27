@@ -4,7 +4,7 @@ import React from 'react';
 import {StyleSheet, Text} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 
-import {AuthStackParamList} from '../../AuthNavigator';
+import {AuthStackParamList} from '../../navigation/AuthNavigator';
 
 const LoginPage = ({
   navigation,
@@ -16,7 +16,9 @@ const LoginPage = ({
   return (
     <ScrollView contentContainerStyle={LoginPageStyles.body}>
       <Text style={LoginPageStyles.title}>Login Page</Text>
-      <Button onPress={onRegisterPress}>Register</Button>
+      <Button type="primary" onPress={onRegisterPress}>
+        Register
+      </Button>
     </ScrollView>
   );
 };

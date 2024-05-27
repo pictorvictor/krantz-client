@@ -4,7 +4,7 @@ import React from 'react';
 import {StyleSheet, Text} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 
-import {AuthStackParamList} from '../../AuthNavigator';
+import {AuthStackParamList} from '../../navigation/AuthNavigator';
 
 const RegisterPage = ({
   navigation,

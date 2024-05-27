@@ -1,7 +1,6 @@
 import {NavigationContainer} from '@react-navigation/native';
 import React, {useState} from 'react';
-import AuthNavigator from './AuthNavigator';
-import MainNavigator from './MainNavigator';
+import {MainNavigator, AuthNavigator} from './navigation';
 
 const RootNavigator = () => {
   const [isAuth] = useState();

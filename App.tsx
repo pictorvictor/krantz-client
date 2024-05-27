@@ -1,8 +1,10 @@
 import React from 'react';
 import {SafeAreaView, StatusBar, useColorScheme} from 'react-native';
-
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {Provider} from '@ant-design/react-native';
+
 import RootNavigator from './src';
+import antdTheme from './src/utils/antd-theme';
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -22,7 +24,9 @@ function App(): JSX.Element {
       theme
       navigator */}
 
-      <RootNavigator />
+      <Provider theme={antdTheme}>
+        <RootNavigator />
+      </Provider>
     </SafeAreaView>
   );
 }
