@@ -1,10 +1,11 @@
-import React from 'react';
+import {Provider} from '@ant-design/react-native';
 import {SafeAreaView, StatusBar, useColorScheme} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import {Provider} from '@ant-design/react-native';
 
 import RootNavigator from './src';
 import antdTheme from './src/utils/antd-theme';
+import {StoreProvider} from './src/hooks/useStores';
+import {rootStore} from './src/stores';
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -20,13 +21,12 @@ function App(): JSX.Element {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
-      {/* store
-      theme
-      navigator */}
 
-      <Provider theme={antdTheme}>
-        <RootNavigator />
-      </Provider>
+      <StoreProvider value={rootStore}>
+        <Provider theme={antdTheme}>
+          <RootNavigator />
+        </Provider>
+      </StoreProvider>
     </SafeAreaView>
   );
 }

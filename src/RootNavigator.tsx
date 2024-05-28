@@ -1,15 +1,18 @@
 import {NavigationContainer} from '@react-navigation/native';
-import React, {useState} from 'react';
-import {MainNavigator, AuthNavigator} from './navigation';
+import {observer} from 'mobx-react-lite';
+import React from 'react';
 
-const RootNavigator = () => {
-  const [isAuth] = useState();
+import {useStores} from './hooks/useStores';
+import {AuthNavigator, MainNavigator} from './navigation';
+
+const RootNavigator = observer(() => {
+  const {authStore} = useStores();
 
   return (
     <NavigationContainer>
-      {isAuth ? <MainNavigator /> : <AuthNavigator />}
+      {authStore?.isAuth ? <MainNavigator /> : <AuthNavigator />}
     </NavigationContainer>
   );
-};
+});
 
 export default RootNavigator;
