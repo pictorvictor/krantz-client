@@ -10,6 +10,9 @@ const theme = {
     textPrimary: '#1F1F1F',
     textSecondary: '#801F1F1F',
     textTertiary: '#4D1F1F1F',
+
+    white: '#FFFFFF',
+    black: '#000000',
   },
 };
 
