@@ -8,8 +8,8 @@ const theme = {
     backgroundGrey: '#F5F5F5',
 
     textPrimary: '#1F1F1F',
-    textSecondary: '#801F1F1F',
-    textTertiary: '#4D1F1F1F',
+    textSecondary: '#1F1F1F80',
+    textTertiary: '#1F1F1F4D',
 
     white: '#FFFFFF',
     black: '#000000',

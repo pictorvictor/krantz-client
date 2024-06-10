@@ -2,19 +2,21 @@ import {Button as AntdButton} from '@ant-design/react-native';
 import {GestureResponderEvent} from 'react-native';
 
 import React from 'react';
-import {SemiBoldText} from '../text/Text';
+import Text from '../text/Text';
 import {ButtonStyles} from './styles';
 
 const Button = ({
   children,
   onPress,
+  style,
 }: {
   children: React.ReactNode;
   onPress: (e: GestureResponderEvent) => void;
+  style?: {[x: string]: string | number};
 }) => (
-  <AntdButton onPress={onPress} type="primary">
+  <AntdButton onPress={onPress} type="primary" style={style}>
     {typeof children === 'string' ? (
-      <SemiBoldText style={ButtonStyles.buttonText}>{children}</SemiBoldText>
+      <Text style={ButtonStyles.buttonText}>{children}</Text>
     ) : (
       children
     )}

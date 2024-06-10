@@ -10,6 +10,9 @@ export const TextStyles = StyleSheet.create({
   bold: {
     fontFamily: 'Montserrat-Bold',
   },
+  boldItalic: {
+    fontFamily: 'Montserrat-Light',
+  },
   extraBold: {
     fontFamily: 'Montserrat-ExtraBold',
   },

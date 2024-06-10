@@ -3,6 +3,8 @@
     "loginPage": "Login Page",
     "login": "Login",
     "registerPage": "Register Page",
-    "register": "Register"
+    "noAccount": "Don't have an account yet? ",
+    "register": "Register",
+    "forgotYourPassword": "Forgot your password?"
   }
 }
