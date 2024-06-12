@@ -4,6 +4,7 @@ import {useTranslation} from 'react-i18next';
 import {View} from 'react-native';
 
 import {BoldText, Button, Input, Logo, SemiBoldText} from '../../components';
+import {useStores} from '../../hooks/useStores';
 import {AuthStackParamList} from '../../navigation/AuthNavigator';
 import {LoginPageStyles} from './styles';
 
@@ -11,6 +12,7 @@ const LoginPage = ({
   navigation,
 }: StackScreenProps<AuthStackParamList, 'login'>) => {
   const {t} = useTranslation();
+  const {authStore} = useStores();
   const [credentials, setCredentials] = useState({
     email: '',
     password: '',
@@ -22,8 +24,8 @@ const LoginPage = ({
       [field]: text,
     }));
 
-  const onLoginPress = () => {
-    console.log(credentials);
+  const onLoginPress = async () => {
+    await authStore.authenticate(credentials);
   };
 
   const onRegisterPress = () => {
