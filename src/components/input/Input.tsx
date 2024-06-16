@@ -1,6 +1,7 @@
 import {TextInput} from 'react-native';
 
 import {InputStyles} from './styles';
+import theme from '../../utils/theme';
 
 const Input = ({
   value,
@@ -18,6 +19,7 @@ const Input = ({
     placeholder={placeholder}
     onChangeText={onChangeText}
     style={{...InputStyles.inputContainer, ...style}}
+    placeholderTextColor={theme.palette.textSecondary}
   />
 );
 

@@ -11,5 +11,6 @@ export const InputStyles = StyleSheet.create({
     borderBottomWidth: 0,
     fontFamily: 'Montserrat-SemiBold',
     fontSize: 18,
+    height: 50,
   },
 });

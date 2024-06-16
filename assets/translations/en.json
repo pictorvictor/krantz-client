@@ -5,6 +5,10 @@
     "registerPage": "Register Page",
     "noAccount": "Don't have an account yet? ",
     "register": "Register",
-    "forgotYourPassword": "Forgot your password?"
+    "forgotYourPassword": "Forgot your password?",
+    "alreadyHaveAnAccount": "Already have an account? ",
+    "confirmPassword": "Confirm password",
+    "firstName": "First name",
+    "lastName": "Last name"
   }
 }
