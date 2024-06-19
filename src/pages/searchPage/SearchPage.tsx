@@ -29,11 +29,15 @@ const SearchPage = observer(() => {
   );
 
   useEffect(() => {
-    debouncedSearch(searchQuery, selectedTypes);
+    if (searchQuery !== '') {
+      debouncedSearch(searchQuery, selectedTypes);
+    } else {
+      kitchenStore.searchKitchens(searchQuery, selectedTypes);
+    }
     return () => {
       debouncedSearch.cancel();
     };
-  }, [searchQuery, selectedTypes, debouncedSearch]);
+  }, [searchQuery, selectedTypes, debouncedSearch, kitchenStore]);
 
   const onSearchQueryChange = (text: string) => setSearchQuery(text);
 
