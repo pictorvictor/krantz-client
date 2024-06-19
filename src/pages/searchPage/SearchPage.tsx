@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import {View} from 'react-native';
 import {observer} from 'mobx-react-lite';
 import {debounce} from 'lodash';
@@ -16,11 +16,22 @@ const SearchPage = observer(() => {
 
   useEffect(() => {
     kitchenStore.fetchKitchenTypes();
-  }, []);
+  }, [kitchenStore]);
+
+  const debouncedSearch = useMemo(
+    () =>
+      debounce((query, types) => {
+        kitchenStore.searchKitchens(query, types);
+      }, 500),
+    [kitchenStore],
+  );
 
   useEffect(() => {
-    kitchenStore.searchKitchens(searchQuery, selectedTypes);
-  }, [kitchenStore, searchQuery, selectedTypes, selectedTypes?.length]);
+    debouncedSearch(searchQuery, selectedTypes);
+    return () => {
+      debouncedSearch.cancel();
+    };
+  }, [searchQuery, selectedTypes, debouncedSearch]);
 
   const onSearchQueryChange = (text: string) => setSearchQuery(text);
 
@@ -36,7 +47,7 @@ const SearchPage = observer(() => {
       <Input
         placeholder={t('search')}
         value={searchQuery}
-        onChangeText={debounce(onSearchQueryChange, 500)}
+        onChangeText={onSearchQueryChange}
         style={SearchPageStyles.searchInput}
       />
       <Multiselect
