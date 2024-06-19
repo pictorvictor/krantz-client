@@ -25,7 +25,6 @@ export class KitchenStore {
         types,
         searchQuery,
       });
-      console.log(data);
       this.kitchens = data;
     } catch (error) {
       console.error('Error fetching kitchens:', error);

@@ -10,6 +10,16 @@
     "confirmPassword": "Confirm password",
     "firstName": "First name",
     "lastName": "Last name",
-    "search": "Search"
+    "search": "Search",
+    "kitchenTypes": {
+      "PIZZA": "Pizza",
+      "ASIAN": "Asian",
+      "BURGER": "Burger",
+      "SALAD": "Salad",
+      "FISH": "Fish",
+      "SOUP": "Soup",
+      "FAST_FOOD": "Fast Food",
+      "DESSERT": "Dessert"
+    }
   }
 }
