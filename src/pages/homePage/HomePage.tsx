@@ -1,7 +1,7 @@
 import {t} from 'i18next';
 import {LoginPageStyles} from '../loginPage/styles';
 import {useStores} from '../../hooks/useStores';
-import {Button} from '../../components';
+import {Button, Text} from '../../components';
 
 const HomePage = () => {
   const {authStore} = useStores();
@@ -11,9 +11,12 @@ const HomePage = () => {
   };
 
   return (
-    <Button onPress={onLogoutPress} style={LoginPageStyles.loginButton}>
-      {t('Logout')}
-    </Button>
+    <>
+      <Text>Home Page</Text>
+      <Button onPress={onLogoutPress} style={LoginPageStyles.loginButton}>
+        {t('Logout')}
+      </Button>
+    </>
   );
 };
 

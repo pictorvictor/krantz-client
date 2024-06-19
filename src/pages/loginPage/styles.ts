@@ -9,9 +9,9 @@ export const LoginPageStyles = StyleSheet.create({
     padding: 40,
     backgroundColor: theme.palette.backgroundGrey,
   },
-  logoContainer: {display: 'flex', flexGrow: 0.5, justifyContent: 'flex-end'},
-  inputsContainer: {display: 'flex', flexGrow: 1, alignSelf: 'stretch'},
-  loginButtonContainer: {display: 'flex', flexGrow: 0.5, width: '100%'},
+  logoContainer: {flexGrow: 0.5, justifyContent: 'flex-end'},
+  inputsContainer: {flexGrow: 1, alignSelf: 'stretch'},
+  loginButtonContainer: {flexGrow: 0.5, width: '100%'},
   loginLabel: {
     fontSize: 25,
     marginBottom: 10,
@@ -24,7 +24,6 @@ export const LoginPageStyles = StyleSheet.create({
     fontStyle: 'italic',
   },
   registerContainer: {
-    display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
   },

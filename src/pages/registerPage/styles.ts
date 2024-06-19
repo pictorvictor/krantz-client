@@ -9,14 +9,13 @@ export const RegisterPageStyles = StyleSheet.create({
     padding: 40,
     backgroundColor: theme.palette.backgroundGrey,
   },
-  inputsContainer: {display: 'flex', flexGrow: 1, alignSelf: 'stretch'},
-  logoContainer: {display: 'flex', flexGrow: 0.5, justifyContent: 'flex-end'},
-  registerButtonContainer: {display: 'flex', flexGrow: 0.5, width: '100%'},
+  inputsContainer: {flexGrow: 1, alignSelf: 'stretch'},
+  logoContainer: {flexGrow: 0.5, justifyContent: 'flex-end'},
+  registerButtonContainer: {flexGrow: 0.5, width: '100%'},
   firstNameInput: {
     width: '48%',
   },
   nameInputContainer: {
-    display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginBottom: 20,
@@ -41,7 +40,6 @@ export const RegisterPageStyles = StyleSheet.create({
     color: theme.palette.textSecondary,
   },
   loginContainer: {
-    display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
   },
