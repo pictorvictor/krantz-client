@@ -9,6 +9,7 @@
     "alreadyHaveAnAccount": "Already have an account? ",
     "confirmPassword": "Confirm password",
     "firstName": "First name",
-    "lastName": "Last name"
+    "lastName": "Last name",
+    "search": "Search"
   }
 }
