@@ -6,12 +6,14 @@ import {debounce} from 'lodash';
 import {useStores} from '../../hooks/useStores';
 import {SearchPageStyles} from './styles';
 import {useTranslation} from 'react-i18next';
-import {Input, Multiselect} from '../../components';
+import {Input, Multiselect, KitchenComponent} from '../../components';
+import {FlatList, GestureHandlerRootView} from 'react-native-gesture-handler';
 
 const SearchPage = observer(() => {
   const {kitchenStore} = useStores();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
+  const numColumns = 2;
   const {t} = useTranslation();
 
   useEffect(() => {
@@ -58,6 +60,17 @@ const SearchPage = observer(() => {
         selectedValues={selectedTypes}
         onValuePress={onSelectType}
       />
+      <View style={SearchPageStyles.kitchensContainer}>
+        <GestureHandlerRootView>
+          <FlatList
+            data={kitchenStore.kitchens}
+            renderItem={({item}) => <KitchenComponent kitchen={item} />}
+            keyExtractor={item => item.id}
+            numColumns={numColumns}
+            key={numColumns}
+          />
+        </GestureHandlerRootView>
+      </View>
     </View>
   );
 });

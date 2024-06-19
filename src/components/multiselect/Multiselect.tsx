@@ -1,5 +1,5 @@
 import {Text, TouchableOpacity, View} from 'react-native';
-import {MultiselectStyles} from './styled';
+import {MultiselectStyles} from './styles';
 
 const Multiselect = ({
   values,

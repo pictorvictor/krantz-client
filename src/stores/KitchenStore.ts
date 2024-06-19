@@ -1,9 +1,9 @@
 import {action, makeAutoObservable, observable} from 'mobx';
 import axios from '../utils/axios';
+import {Kitchen} from '../types/kitchen.types';
 
 export class KitchenStore {
-  @observable kitchens = [];
-  @observable filters: string[] = [];
+  @observable kitchens: Kitchen[] = [];
   @observable kitchenTypes: string[] = [];
 
   constructor() {
@@ -28,14 +28,6 @@ export class KitchenStore {
       this.kitchens = data;
     } catch (error) {
       console.error('Error fetching kitchens:', error);
-    }
-  }
-
-  @action toggleFilter(filterKey: string) {
-    if (this.filters.includes(filterKey)) {
-      this.filters = this.filters.filter(f => f !== filterKey);
-    } else {
-      this.filters.push(filterKey);
     }
   }
 }

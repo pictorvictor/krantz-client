@@ -10,4 +10,8 @@ export const SearchPageStyles = StyleSheet.create({
   searchInput: {
     marginBottom: 10,
   },
+  kitchensContainer: {
+    flex: 1,
+    marginTop: 25,
+  },
 });
