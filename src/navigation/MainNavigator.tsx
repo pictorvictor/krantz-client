@@ -5,7 +5,14 @@ import {CartPage, HomePage, ProfilePage, SearchPage} from '../pages';
 import {MenuOption} from '../utils/enums';
 import {BottomTabBar} from '../components';
 
-const Tabs = createBottomTabNavigator();
+const Tabs = createBottomTabNavigator<MainBottomTabBarParamList>();
+
+export type MainBottomTabBarParamList = {
+  [MenuOption.Home]: undefined;
+  [MenuOption.Search]: {fromHome: boolean};
+  [MenuOption.Cart]: undefined;
+  [MenuOption.Profile]: undefined;
+};
 
 const MainNavigator = () => {
   return (

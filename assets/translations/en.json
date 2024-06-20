@@ -20,6 +20,7 @@
       "SOUP": "Soup",
       "FAST_FOOD": "Fast Food",
       "DESSERT": "Dessert"
-    }
+    },
+    "welcome": "Welcome,"
   }
 }
