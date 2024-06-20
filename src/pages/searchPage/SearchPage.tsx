@@ -80,6 +80,7 @@ const SearchPage = observer(
         <View style={SearchPageStyles.kitchensContainer}>
           <GestureHandlerRootView>
             <FlatList
+              showsVerticalScrollIndicator={false}
               data={kitchenStore.kitchens}
               renderItem={({item}) => <KitchenComponent kitchen={item} />}
               keyExtractor={item => item.id}

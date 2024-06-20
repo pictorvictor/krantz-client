@@ -11,7 +11,7 @@ import {MenuOption} from '../../utils/enums';
 const MenuOptionMapping: {[key: string]: any} = {
   [MenuOption.Home]: 'home',
   [MenuOption.Search]: 'search',
-  [MenuOption.Cart]: 'truck',
+  [MenuOption.Cart]: 'shopping-cart',
   [MenuOption.Profile]: 'user',
 };
 

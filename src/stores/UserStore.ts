@@ -13,7 +13,7 @@ export class UserStore {
 
   @action async me() {
     try {
-      const {data} = await axios.get('api/me');
+      const {data} = await axios.get('api/auth/my-profile');
       if (data?.firstName) {
         runInAction(() => {
           this.firstName = data?.firstName;
