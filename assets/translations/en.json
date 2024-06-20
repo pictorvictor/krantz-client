@@ -21,6 +21,8 @@
       "FAST_FOOD": "Fast Food",
       "DESSERT": "Dessert"
     },
-    "welcome": "Welcome,"
+    "welcome": "Welcome,",
+    "yourFavourites": "Your favourites",
+    "closestNearby": "Closest nearby"
   }
 }
