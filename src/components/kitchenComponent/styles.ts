@@ -4,17 +4,17 @@ import theme from '../../utils/theme';
 export const KitchenComponentStyles = StyleSheet.create({
   container: {
     flex: 1,
+    alignItems: 'center',
     marginBottom: 10,
-    overflow: 'hidden',
-    width: '42%',
   },
   image: {
     width: 150,
     height: 150,
-    borderRadius: 10,
+    borderRadius: 20,
   },
   infoContainer: {
-    flex: 1,
+    width: 150,
+    paddingHorizontal: 1,
   },
   ratingContainer: {
     flexDirection: 'row',
@@ -23,7 +23,6 @@ export const KitchenComponentStyles = StyleSheet.create({
   headerContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 5,
   },
   name: {
     fontSize: 13,

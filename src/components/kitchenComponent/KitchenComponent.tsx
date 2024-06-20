@@ -20,7 +20,7 @@ const KitchenComponent = ({kitchen}: {kitchen: Kitchen}) => {
           </BoldText>
           <View style={KitchenComponentStyles.ratingContainer}>
             <BoldText style={KitchenComponentStyles.rating}>
-              {kitchen.rating.toString()}
+              {`${kitchen.rating}`}
             </BoldText>
             <IconFill name="star" color={theme.palette.yellow} />
           </View>

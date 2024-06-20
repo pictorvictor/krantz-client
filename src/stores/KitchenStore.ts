@@ -1,4 +1,4 @@
-import {action, makeAutoObservable, observable} from 'mobx';
+import {action, makeAutoObservable, observable, runInAction} from 'mobx';
 import axios from '../utils/axios';
 import {Kitchen} from '../types/kitchen.types';
 
@@ -13,7 +13,9 @@ export class KitchenStore {
   @action async fetchKitchenTypes() {
     try {
       const {data} = await axios.get('api/kitchen/types');
-      this.kitchenTypes = data;
+      runInAction(() => {
+        this.kitchenTypes = data;
+      });
     } catch (error) {
       console.error('Error fetching kitchen types:', error);
     }
@@ -25,7 +27,9 @@ export class KitchenStore {
         types,
         searchQuery,
       });
-      this.kitchens = data;
+      runInAction(() => {
+        this.kitchens = data;
+      });
     } catch (error) {
       console.error('Error fetching kitchens:', error);
     }
