@@ -6,13 +6,13 @@ import React from 'react';
 import theme from '../../utils/theme';
 import {SemiBoldText} from '../text/Text';
 import {BottomBarStyles} from './styles';
-import {MenuOption} from '../../utils/enums';
+import {Route} from '../../utils/enums';
 
 const MenuOptionMapping: {[key: string]: any} = {
-  [MenuOption.Home]: 'home',
-  [MenuOption.Search]: 'search',
-  [MenuOption.Cart]: 'shopping-cart',
-  [MenuOption.Profile]: 'user',
+  [Route.Home]: 'home',
+  [Route.Search]: 'search',
+  [Route.Cart]: 'shopping-cart',
+  [Route.Profile]: 'user',
 };
 
 const BottomTabBar = ({state, navigation}: BottomTabBarProps) => {

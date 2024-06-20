@@ -6,14 +6,14 @@ import {View} from 'react-native';
 import {BoldText, ExtraBoldText, Input} from '../../components';
 import {useStores} from '../../hooks/useStores';
 import {MainBottomTabBarParamList} from '../../navigation/MainNavigator';
-import {MenuOption} from '../../utils/enums';
+import {Route} from '../../utils/enums';
 import KitchenListComponent from './kitchenListComponent/KitchenListComponent';
 import {HomePageStyles} from './styles';
 
 const HomePage = observer(
   ({
     navigation,
-  }: BottomTabScreenProps<MainBottomTabBarParamList, MenuOption.Home>) => {
+  }: BottomTabScreenProps<MainBottomTabBarParamList, Route.Home>) => {
     const {userStore, kitchenStore} = useStores();
     const {t} = useTranslation();
 
@@ -24,7 +24,7 @@ const HomePage = observer(
     }, [userStore, kitchenStore]);
 
     const onSearchInputPress = () => {
-      navigation.navigate(MenuOption.Search, {fromHome: true});
+      navigation.navigate(Route.Search, {fromHome: true});
     };
 
     return (

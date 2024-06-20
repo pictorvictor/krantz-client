@@ -9,13 +9,11 @@ import {FlatList, GestureHandlerRootView} from 'react-native-gesture-handler';
 import {Input, KitchenComponent, Multiselect} from '../../components';
 import {useStores} from '../../hooks/useStores';
 import {MainBottomTabBarParamList} from '../../navigation/MainNavigator';
-import {MenuOption} from '../../utils/enums';
+import {Route} from '../../utils/enums';
 import {SearchPageStyles} from './styles';
 
 const SearchPage = observer(
-  ({
-    route,
-  }: BottomTabScreenProps<MainBottomTabBarParamList, MenuOption.Search>) => {
+  ({route}: BottomTabScreenProps<MainBottomTabBarParamList, Route.Search>) => {
     const {kitchenStore} = useStores();
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedTypes, setSelectedTypes] = useState<string[]>([]);

@@ -1,17 +1,18 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import React from 'react';
 
-import {CartPage, HomePage, ProfilePage, SearchPage} from '../pages';
-import {MenuOption} from '../utils/enums';
 import {BottomTabBar} from '../components';
+import {CartPage, ProfilePage, SearchPage} from '../pages';
+import {Route} from '../utils/enums';
+import HomeNavigator from './HomeNavigator';
 
 const Tabs = createBottomTabNavigator<MainBottomTabBarParamList>();
 
 export type MainBottomTabBarParamList = {
-  [MenuOption.Home]: undefined;
-  [MenuOption.Search]: {fromHome: boolean};
-  [MenuOption.Cart]: undefined;
-  [MenuOption.Profile]: undefined;
+  [Route.Home]: undefined;
+  [Route.Search]: {fromHome: boolean};
+  [Route.Cart]: undefined;
+  [Route.Profile]: undefined;
 };
 
 const MainNavigator = () => {
@@ -21,10 +22,10 @@ const MainNavigator = () => {
       screenOptions={{
         headerShown: false,
       }}>
-      <Tabs.Screen name={MenuOption.Home} component={HomePage} />
-      <Tabs.Screen name={MenuOption.Search} component={SearchPage} />
-      <Tabs.Screen name={MenuOption.Cart} component={CartPage} />
-      <Tabs.Screen name={MenuOption.Profile} component={ProfilePage} />
+      <Tabs.Screen name={Route.Home} component={HomeNavigator} />
+      <Tabs.Screen name={Route.Search} component={SearchPage} />
+      <Tabs.Screen name={Route.Cart} component={CartPage} />
+      <Tabs.Screen name={Route.Profile} component={ProfilePage} />
     </Tabs.Navigator>
   );
 };
