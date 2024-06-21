@@ -5,3 +5,5 @@ export {default as SearchPage} from './searchPage/SearchPage';
 export {default as CartPage} from './cartPage/CartPage';
 export {default as ProfilePage} from './profilePage/ProfilePage';
 export {default as KitchenDetailsPage} from './kitchenDetailsPage/KitchenDetailsPage';
+export {default as KitchenInformationPage} from './kitchenInformationPage/KitchenInformationPage';
+export {default as MealDetailsPage} from './mealDetailsPage/MealDetailsPage';

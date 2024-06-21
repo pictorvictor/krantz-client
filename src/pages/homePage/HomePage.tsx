@@ -3,11 +3,15 @@ import {observer} from 'mobx-react-lite';
 import React, {useEffect} from 'react';
 import {useTranslation} from 'react-i18next';
 import {View} from 'react-native';
-import {BoldText, ExtraBoldText, Input} from '../../components';
+import {
+  BoldText,
+  ExtraBoldText,
+  Input,
+  KitchenListComponent,
+} from '../../components';
 import {useStores} from '../../hooks/useStores';
 import {MainBottomTabBarParamList} from '../../navigation/MainNavigator';
 import {Route} from '../../utils/enums';
-import KitchenListComponent from './kitchenListComponent/KitchenListComponent';
 import {HomePageStyles} from './styles';
 
 const HomePage = observer(

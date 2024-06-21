@@ -45,5 +45,12 @@ export interface Kitchen {
   workingHours: WorkingHours[];
   rating: number;
   kitchenImage: string;
+  address: string;
   distance?: number;
+  companyAddress: string;
+  companyCUI: string;
+  companyName: string;
+  companyRegCom: string;
+  contactEmail: string;
+  contactPhone: string;
 }

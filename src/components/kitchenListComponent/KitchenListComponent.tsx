@@ -2,12 +2,12 @@ import {IconOutline} from '@ant-design/icons-react-native';
 import {useNavigation} from '@react-navigation/native';
 import {observer} from 'mobx-react-lite';
 import {ScrollView, TouchableOpacity, View} from 'react-native';
-
-import {BoldText, KitchenComponent} from '../../../components';
-import {Kitchen} from '../../../types/kitchen.types';
-import {Route} from '../../../utils/enums';
-import theme from '../../../utils/theme';
 import {KitchenListComponentStyles} from './styles';
+import {Kitchen} from '../../types/kitchen.types';
+import theme from '../../utils/theme';
+import KitchenComponent from '../kitchenComponent/KitchenComponent';
+import {BoldText} from '../text/Text';
+import {Route} from '../../utils/enums';
 
 const KitchenListComponent = observer(
   ({title, kitchens}: {title: string; kitchens: Kitchen[]}) => {

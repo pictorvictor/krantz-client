@@ -2,7 +2,6 @@ import {debounce} from 'lodash';
 import {observer} from 'mobx-react-lite';
 import React, {useEffect, useMemo, useRef, useState} from 'react';
 import {View} from 'react-native';
-
 import {BottomTabScreenProps} from '@react-navigation/bottom-tabs';
 import {useTranslation} from 'react-i18next';
 import {FlatList, GestureHandlerRootView} from 'react-native-gesture-handler';
@@ -11,6 +10,8 @@ import {useStores} from '../../hooks/useStores';
 import {MainBottomTabBarParamList} from '../../navigation/MainNavigator';
 import {Route} from '../../utils/enums';
 import {SearchPageStyles} from './styles';
+import {Kitchen} from '../../types/kitchen.types';
+import {useNavigation} from '@react-navigation/native';
 
 const SearchPage = observer(
   ({route}: BottomTabScreenProps<MainBottomTabBarParamList, Route.Search>) => {
@@ -19,11 +20,12 @@ const SearchPage = observer(
     const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
     const searchInputRef = useRef<any>(null);
     const numColumns = 2;
+    const navigation = useNavigation();
     const {t} = useTranslation();
 
     useEffect(() => {
       if (route.params?.fromHome) {
-        if (searchInputRef && searchInputRef.current) {
+        if (searchInputRef?.current) {
           searchInputRef.current.focus();
         }
       }
@@ -58,6 +60,12 @@ const SearchPage = observer(
           : [...prevSelectedTypes, type],
       );
 
+    const onKitchenPress = (kitchen: Kitchen) => () =>
+      // @ts-ignore
+      navigation.navigate(Route.KitchenDetails, {
+        kitchen,
+      });
+
     return (
       <View style={SearchPageStyles.container}>
         <Input
@@ -80,7 +88,12 @@ const SearchPage = observer(
             <FlatList
               showsVerticalScrollIndicator={false}
               data={kitchenStore.kitchens}
-              renderItem={({item}) => <KitchenComponent kitchen={item} />}
+              renderItem={({item}) => (
+                <KitchenComponent
+                  kitchen={item}
+                  onPress={onKitchenPress(item)}
+                />
+              )}
               keyExtractor={item => item.id}
               numColumns={numColumns}
               key={numColumns}

@@ -5,38 +5,47 @@ import {KitchenComponentStyles} from './styles';
 import React from 'react';
 import {IconFill, IconOutline} from '@ant-design/icons-react-native';
 import theme from '../../utils/theme';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
-const KitchenComponent = ({kitchen}: {kitchen: Kitchen}) => {
+const KitchenComponent = ({
+  kitchen,
+  onPress,
+}: {
+  kitchen: Kitchen;
+  onPress?: () => void;
+}) => {
   return (
     <View style={KitchenComponentStyles.container}>
-      <Image
-        source={{uri: kitchen.kitchenImage}}
-        style={KitchenComponentStyles.image}
-      />
-      <View style={KitchenComponentStyles.infoContainer}>
-        <View style={KitchenComponentStyles.headerContainer}>
-          <BoldText style={KitchenComponentStyles.name}>
-            {kitchen.name}
-          </BoldText>
-          <View style={KitchenComponentStyles.ratingContainer}>
-            <BoldText style={KitchenComponentStyles.rating}>
-              {`${kitchen.rating}`}
+      <TouchableOpacity onPress={onPress}>
+        <Image
+          source={{uri: kitchen.kitchenImage}}
+          style={KitchenComponentStyles.image}
+        />
+        <View style={KitchenComponentStyles.infoContainer}>
+          <View style={KitchenComponentStyles.headerContainer}>
+            <BoldText style={KitchenComponentStyles.name}>
+              {kitchen.name}
             </BoldText>
-            <IconFill name="star" color={theme.palette.yellow} />
+            <View style={KitchenComponentStyles.ratingContainer}>
+              <BoldText style={KitchenComponentStyles.rating}>
+                {`${kitchen.rating}`}
+              </BoldText>
+              <IconFill name="star" color={theme.palette.yellow} />
+            </View>
+          </View>
+          <View style={KitchenComponentStyles.hoursContainer}>
+            <IconOutline
+              name="clock-circle"
+              size={10}
+              color={theme.palette.textSecondary}
+            />
+            <SemiBoldText style={KitchenComponentStyles.hours}>
+              {/* TODO: get current day and get the endTime of current day from kitchen.workingHours */}
+              {'22:00'}
+            </SemiBoldText>
           </View>
         </View>
-        <View style={KitchenComponentStyles.hoursContainer}>
-          <IconOutline
-            name="clock-circle"
-            size={10}
-            color={theme.palette.textSecondary}
-          />
-          <SemiBoldText style={KitchenComponentStyles.hours}>
-            {/* TODO: get current day and get the endTime of current day from kitchen.workingHours */}
-            {'22:00'}
-          </SemiBoldText>
-        </View>
-      </View>
+      </TouchableOpacity>
     </View>
   );
 };

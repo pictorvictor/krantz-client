@@ -2,12 +2,14 @@ import {action, makeAutoObservable, observable, runInAction} from 'mobx';
 import axios from '../utils/axios';
 import {Kitchen} from '../types/kitchen.types';
 import Geolocation from '@react-native-community/geolocation';
+import {Meal} from '../types/meal.types';
 
 export class KitchenStore {
   @observable kitchens: Kitchen[] = [];
   @observable kitchenTypes: string[] = [];
   @observable kitchensByProximity: Kitchen[] = [];
   @observable kitchensFavorites: Kitchen[] = [];
+  @observable kitchenMeals: Map<string, Meal[]> = new Map();
 
   constructor() {
     makeAutoObservable(this);
@@ -67,5 +69,34 @@ export class KitchenStore {
     } catch (error) {
       console.error('Error fetching favourite kitchens:', error);
     }
+  }
+
+  @action async fetchKitchenById(id: string) {
+    try {
+      const {data} = await axios.get(`api/kitchen/${id}`);
+      runInAction(() => {
+        this.kitchenMeals = data.meals;
+      });
+    } catch (error) {
+      console.error('Error fetching kitchen by id:', error);
+    }
+  }
+
+  @action async fetchMeals(kitchenId: string) {
+    if (this.kitchenMeals.has(kitchenId)) {
+      return;
+    }
+    try {
+      const {data} = await axios.get(`api/kitchen/${kitchenId}`);
+      runInAction(() => {
+        this.kitchenMeals.set(kitchenId, data.meals);
+      });
+    } catch (error) {
+      console.error('Error fetching meals:', error);
+    }
+  }
+
+  getMeals(kitchenId: string) {
+    return this.kitchenMeals.get(kitchenId) || [];
   }
 }

@@ -23,6 +23,7 @@
     },
     "welcome": "Welcome,",
     "yourFavourites": "Your favourites",
-    "closestNearby": "Closest nearby"
+    "closestNearby": "Closest nearby",
+    "currency": "lei"
   }
 }
