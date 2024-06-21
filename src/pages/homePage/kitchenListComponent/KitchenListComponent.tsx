@@ -13,10 +13,10 @@ const KitchenListComponent = observer(
   ({title, kitchens}: {title: string; kitchens: Kitchen[]}) => {
     const navigation = useNavigation();
 
-    const onKitchenPress = (id: string) => () =>
+    const onKitchenPress = (kitchen: Kitchen) => () =>
       // @ts-ignore
       navigation.navigate(Route.KitchenDetails, {
-        kitchenId: id,
+        kitchen,
       });
 
     return (
@@ -37,7 +37,7 @@ const KitchenListComponent = observer(
                 index !== kitchens.length - 1 &&
                 KitchenListComponentStyles.kitchenComponentSpacing
               }
-              onPress={onKitchenPress(kitchen.id)}>
+              onPress={onKitchenPress(kitchen)}>
               <KitchenComponent kitchen={kitchen} />
             </TouchableOpacity>
           ))}

@@ -13,3 +13,4 @@ export {default as Logo} from './logo/Logo';
 export {default as BottomTabBar} from './bottomTabBar/BottomTabBar';
 export {default as Multiselect} from './multiselect/Multiselect';
 export {default as KitchenComponent} from './kitchenComponent/KitchenComponent';
+export {default as BackButton} from './backButton/BackButton';
