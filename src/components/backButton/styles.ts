@@ -3,7 +3,7 @@ import theme from '../../utils/theme';
 
 export const BackButtonStyles = StyleSheet.create({
   container: {
-    backgroundColor: theme.palette.grey,
+    backgroundColor: theme.palette.white,
     borderRadius: 20,
     width: 40,
     height: 40,

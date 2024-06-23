@@ -10,10 +10,10 @@ import {Meal} from '../types/meal.types';
 const Stack = createStackNavigator<HomeStackParamList>();
 
 export type HomeStackParamList = {
-  [Route.Home]: undefined;
+  [Route.HomePage]: undefined;
   [Route.KitchenDetails]: {kitchen: Kitchen};
   [Route.KitchenInformation]: {kitchen: Kitchen};
-  [Route.MealDetails]: {meal: Meal};
+  [Route.MealDetails]: {meal: Meal; kitchen: Kitchen};
 };
 
 const HomeNavigator = () => {
@@ -22,7 +22,7 @@ const HomeNavigator = () => {
       screenOptions={{
         headerShown: false,
       }}>
-      <Stack.Screen name={Route.Home} component={HomePage} />
+      <Stack.Screen name={Route.HomePage} component={HomePage} />
       <Stack.Screen
         name={Route.KitchenDetails}
         component={KitchenDetailsPage}

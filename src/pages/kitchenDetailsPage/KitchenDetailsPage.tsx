@@ -17,12 +17,20 @@ import {useTranslation} from 'react-i18next';
 import {useStores} from '../../hooks/useStores';
 import {observer} from 'mobx-react-lite';
 import MealComponent from '../../components/mealComponent/MealComponent';
+import {useNavigation} from '@react-navigation/native';
+import {Meal} from '../../types/meal.types';
 
 const KitchenDetailsPage = observer(
   ({route}: StackScreenProps<HomeStackParamList, Route.KitchenDetails>) => {
     const {t} = useTranslation();
     const {kitchen} = route.params;
     const {kitchenStore} = useStores();
+    const navigation = useNavigation();
+
+    const onMealPress = (meal: Meal) => {
+      //@ts-ignore
+      navigation.navigate(Route.MealDetails, {meal, kitchen});
+    };
 
     useEffect(() => {
       kitchenStore.fetchMeals(kitchen.id);
@@ -74,7 +82,7 @@ const KitchenDetailsPage = observer(
               <TouchableOpacity
                 key={meal.id}
                 style={KitchenDetailsPageStyles.mealContainer}>
-                <MealComponent meal={meal} />
+                <MealComponent meal={meal} onPress={onMealPress} />
               </TouchableOpacity>
             ))}
           </ScrollView>

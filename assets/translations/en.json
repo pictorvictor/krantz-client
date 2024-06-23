@@ -24,6 +24,9 @@
     "welcome": "Welcome,",
     "yourFavourites": "Your favourites",
     "closestNearby": "Closest nearby",
-    "currency": "lei"
+    "currency": "lei",
+    "CARD_ONLINE": "Card online",
+    "CASH_ON_SITE": "Cash on site",
+    "CARD_ON_SITE": "Card on site"
   }
 }

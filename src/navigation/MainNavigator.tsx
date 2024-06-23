@@ -5,6 +5,8 @@ import {BottomTabBar} from '../components';
 import {CartPage, ProfilePage, SearchPage} from '../pages';
 import {Route} from '../utils/enums';
 import HomeNavigator from './HomeNavigator';
+import {useStores} from '../hooks/useStores';
+import {observer} from 'mobx-react-lite';
 
 const Tabs = createBottomTabNavigator<MainBottomTabBarParamList>();
 
@@ -15,10 +17,14 @@ export type MainBottomTabBarParamList = {
   [Route.Profile]: undefined;
 };
 
-const MainNavigator = () => {
+const MainNavigator = observer(() => {
+  const {cartStore} = useStores();
+
   return (
     <Tabs.Navigator
-      tabBar={BottomTabBar}
+      tabBar={props => (
+        <BottomTabBar {...props} isCartEmpty={cartStore.isCartEmpty} />
+      )}
       screenOptions={{
         headerShown: false,
       }}>
@@ -28,6 +34,6 @@ const MainNavigator = () => {
       <Tabs.Screen name={Route.Profile} component={ProfilePage} />
     </Tabs.Navigator>
   );
-};
+});
 
 export default MainNavigator;

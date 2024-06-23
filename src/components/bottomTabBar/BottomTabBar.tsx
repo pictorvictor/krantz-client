@@ -15,11 +15,25 @@ const MenuOptionMapping: {[key: string]: any} = {
   [Route.Profile]: 'user',
 };
 
-const BottomTabBar = ({state, navigation}: BottomTabBarProps) => {
+interface BottomTabBarPropsWithCart extends BottomTabBarProps {
+  isCartEmpty: boolean;
+}
+
+const BottomTabBar = ({
+  state,
+  navigation,
+  isCartEmpty,
+}: BottomTabBarPropsWithCart) => {
   return (
     <View style={BottomBarStyles.container}>
       {state.routes.map((route, index) => {
         const isFocused = state.index === index;
+        const isCartTab = route.name === Route.Cart;
+
+        const tabBarItemStyle =
+          isCartTab && isCartEmpty
+            ? [BottomBarStyles.tabBarItem, BottomBarStyles.disabledTabBarItem]
+            : BottomBarStyles.tabBarItem;
 
         const onPress = () => {
           if (!isFocused) {
@@ -34,7 +48,8 @@ const BottomTabBar = ({state, navigation}: BottomTabBarProps) => {
             accessibilityState={isFocused ? {selected: true} : {}}
             accessibilityLabel={route.name}
             onPress={onPress}
-            style={BottomBarStyles.tabBarItem}>
+            disabled={isCartTab && isCartEmpty}
+            style={tabBarItemStyle}>
             <IconOutline
               name={MenuOptionMapping[route.name]}
               size={20}

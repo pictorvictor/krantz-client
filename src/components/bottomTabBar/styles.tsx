@@ -19,4 +19,7 @@ export const BottomBarStyles = StyleSheet.create({
     color: theme.palette.textPrimary,
     fontSize: 12,
   },
+  disabledTabBarItem: {
+    opacity: 0.5,
+  },
 });

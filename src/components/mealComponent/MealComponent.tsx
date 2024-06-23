@@ -1,24 +1,39 @@
-import {Image, View} from 'react-native';
-import {BoldText, SemiBoldText} from '../index';
-import {MealComponentStyles} from './styles';
 import React from 'react';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import {
+  Image,
+  View,
+  TouchableOpacity,
+  GestureResponderEvent,
+} from 'react-native';
+import {BoldText, Counter, SemiBoldText} from '../index';
+import {MealComponentStyles} from './styles';
 import {Meal} from '../../types/meal.types';
 import InitialPrice from '../initialPrice/InitialPrice';
 import DiscountedPrice from '../discountedPrice/DiscountedPrice';
-import {useNavigation} from '@react-navigation/native';
-import {Route} from '../../utils/enums';
 
-const MealComponent = ({meal}: {meal: Meal}) => {
-  const navigation = useNavigation();
+interface MealComponentProps {
+  meal: Meal;
+  onPress?: (meal: Meal) => void;
+  showCounter?: boolean;
+  onQuantityChange?: (newQuantity: number, mealId: string) => void;
+  initialQuantity?: number;
+}
 
-  const onMealPress = () => {
-    //@ts-ignore
-    navigation.navigate(Route.MealDetails, {meal});
+const MealComponent: React.FC<MealComponentProps> = ({
+  meal,
+  onPress,
+  showCounter = false,
+  onQuantityChange,
+  initialQuantity = 1,
+}) => {
+  const handlePress = (_event: GestureResponderEvent) => {
+    if (onPress) {
+      onPress(meal);
+    }
   };
 
   return (
-    <TouchableOpacity onPress={onMealPress}>
+    <TouchableOpacity onPress={handlePress} disabled={!onPress}>
       <View style={MealComponentStyles.container}>
         <Image
           source={{uri: meal.mealImage}}
@@ -31,15 +46,28 @@ const MealComponent = ({meal}: {meal: Meal}) => {
             ellipsizeMode={'tail'}>
             {meal.name}
           </BoldText>
-          <SemiBoldText
-            style={MealComponentStyles.mealDescription}
-            ellipsizeMode="tail"
-            numberOfLines={3}>
-            {meal.description}
-          </SemiBoldText>
-          <View style={MealComponentStyles.pricesContainer}>
-            <InitialPrice>{`${meal.initialPrice}`}</InitialPrice>
-            <DiscountedPrice>{`${meal.discountedPrice}`}</DiscountedPrice>
+          {!showCounter && (
+            <SemiBoldText
+              style={MealComponentStyles.mealDescription}
+              ellipsizeMode="tail"
+              numberOfLines={3}>
+              {meal.description}
+            </SemiBoldText>
+          )}
+          <View style={MealComponentStyles.pricesAndCounterContainer}>
+            <View style={MealComponentStyles.pricesContainer}>
+              <InitialPrice>{`${meal.initialPrice}`}</InitialPrice>
+              <DiscountedPrice>{`${meal.discountedPrice}`}</DiscountedPrice>
+            </View>
+            {showCounter && (
+              <View style={MealComponentStyles.counterContainer}>
+                <Counter
+                  initialQuantity={initialQuantity}
+                  onQuantityChange={onQuantityChange}
+                  mealId={meal.id}
+                />
+              </View>
+            )}
           </View>
         </View>
       </View>

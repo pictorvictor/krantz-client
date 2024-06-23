@@ -29,7 +29,15 @@ export const MealComponentStyles = StyleSheet.create({
     textAlign: 'left',
     lineHeight: 12,
   },
-  pricesContainer: {
+  pricesAndCounterContainer: {
+    flexDirection: 'row',
     marginTop: 'auto',
+  },
+  pricesContainer: {
+    marginBottom: 10,
+  },
+  counterContainer: {
+    marginTop: 10,
+    marginLeft: 'auto',
   },
 });

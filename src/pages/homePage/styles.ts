@@ -4,6 +4,7 @@ import theme from '../../utils/theme';
 export const HomePageStyles = StyleSheet.create({
   container: {
     paddingHorizontal: 20,
+    height: '100%',
     backgroundColor: theme.palette.backgroundGrey,
   },
   welcomeLabel: {

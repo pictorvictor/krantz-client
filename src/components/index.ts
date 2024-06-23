@@ -19,3 +19,5 @@ export {default as InfoButton} from './infoButton/InfoButton';
 export {default as InitialPrice} from './initialPrice/InitialPrice';
 export {default as DiscountedPrice} from './discountedPrice/DiscountedPrice';
 export {default as KitchenListComponent} from './kitchenListComponent/KitchenListComponent';
+export {default as Counter} from './counter/Counter';
+export {default as RadioGroup} from './radioGroup/RadioGroup';

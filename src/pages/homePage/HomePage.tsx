@@ -1,4 +1,3 @@
-import {BottomTabScreenProps} from '@react-navigation/bottom-tabs';
 import {observer} from 'mobx-react-lite';
 import React, {useEffect} from 'react';
 import {useTranslation} from 'react-i18next';
@@ -10,16 +9,17 @@ import {
   KitchenListComponent,
 } from '../../components';
 import {useStores} from '../../hooks/useStores';
-import {MainBottomTabBarParamList} from '../../navigation/MainNavigator';
 import {Route} from '../../utils/enums';
 import {HomePageStyles} from './styles';
+import {StackScreenProps} from '@react-navigation/stack';
+import {HomeStackParamList} from '../../navigation/HomeNavigator';
+import {useNavigation} from '@react-navigation/native';
 
 const HomePage = observer(
-  ({
-    navigation,
-  }: BottomTabScreenProps<MainBottomTabBarParamList, Route.Home>) => {
+  (_route: StackScreenProps<HomeStackParamList, Route.HomePage>) => {
     const {userStore, kitchenStore} = useStores();
     const {t} = useTranslation();
+    const navigation = useNavigation();
 
     useEffect(() => {
       userStore.me();
@@ -28,6 +28,7 @@ const HomePage = observer(
     }, [userStore, kitchenStore]);
 
     const onSearchInputPress = () => {
+      //@ts-ignore
       navigation.navigate(Route.Search, {fromHome: true});
     };
 
