@@ -8,23 +8,29 @@ import {RadioGroupStyles} from './styles';
 
 interface RadioGroupProps {
   options: PaymentMethod[];
+  onChange: (value: PaymentMethod) => void;
 }
 
-const RadioGroup: React.FC<RadioGroupProps> = ({options}) => {
+const RadioGroup: React.FC<RadioGroupProps> = ({options, onChange}) => {
   const [value, setValue] = useState(PaymentMethod.CASH_ON_SITE);
   const {t} = useTranslation();
 
-  const onChange = (e: OnGroupChangeParams) => {
+  const onRadioChange = (e: OnGroupChangeParams) => {
     setValue(e.target.value as PaymentMethod);
+    onChange && onChange(e.target.value as PaymentMethod);
   };
 
   return (
     <Radio.Group
       value={value}
-      onChange={onChange}
+      onChange={onRadioChange}
       style={RadioGroupStyles.radioGroup}>
       {options.map(option => (
-        <Radio value={option} key={option} style={RadioGroupStyles.radio}>
+        <Radio
+          value={option}
+          key={option}
+          style={RadioGroupStyles.radio}
+          disabled={option === PaymentMethod.CARD_ONLINE}>
           <Text style={RadioGroupStyles.text}>{t(option.toString())}</Text>
         </Radio>
       ))}

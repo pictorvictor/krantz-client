@@ -14,15 +14,41 @@ import {observer} from 'mobx-react-lite';
 import {t} from 'i18next';
 import {CartItem} from '../../types/cart.types';
 import {enumToArray} from '../../utils/helpers';
-import {PaymentMethod} from '../../utils/enums';
+import {PaymentMethod, Route} from '../../utils/enums';
 import {useState} from 'react';
+import {useNavigation} from '@react-navigation/native';
 
 const CartPage = observer(() => {
   const {cartStore} = useStores();
-  const [observations, setObservations] = useState('');
+  const [observations, setObservations] = useState(
+    cartStore.cart?.observations as string,
+  );
+  const [paymentMethod, setPaymentMethod] = useState(
+    cartStore.cart?.paymentMethod,
+  );
+  const navigation = useNavigation();
 
   const onPlaceOrder = () => {
-    console.log(cartStore.cart?.cartItems);
+    if (!cartStore.orderSummary) {
+      cartStore.placeOrder().then(() => {
+        // @ts-ignore
+        navigation.navigate(Route.OrderSummary);
+      });
+    } else {
+      cartStore.clearCart();
+      // @ts-ignore
+      navigation.navigate(Route.HomePage);
+    }
+  };
+
+  const onViewOrder = () => {
+    // @ts-ignore
+    navigation.navigate(Route.OrderSummary);
+  };
+
+  const onPaymentMethodChange = (newPaymentMethod: PaymentMethod) => {
+    setPaymentMethod(newPaymentMethod);
+    cartStore.setPaymentMethod(paymentMethod as PaymentMethod);
   };
 
   const onObservationsChange = (newObservations: string) => {
@@ -65,7 +91,10 @@ const CartPage = observer(() => {
             {t('Payment method')}
           </SemiBoldText>
           <View style={CartPageStyles.radioGroupContainer}>
-            <RadioGroup options={enumToArray(PaymentMethod)} />
+            <RadioGroup
+              options={enumToArray(PaymentMethod)}
+              onChange={onPaymentMethodChange}
+            />
           </View>
         </View>
         <View style={CartPageStyles.observationsContainer}>
@@ -74,13 +103,20 @@ const CartPage = observer(() => {
             onChangeText={onObservationsChange}
             placeholder={t('Observations')}
             style={CartPageStyles.observations}
+            numberOfLines={1}
+            multiline={true}
           />
         </View>
       </ScrollView>
       <View style={CartPageStyles.placeOrderContainer}>
         <Button style={CartPageStyles.placeOrder} onPress={onPlaceOrder}>
-          {t('Place order')}
+          {cartStore.orderSummary ? t('Place new order') : t('Place order')}
         </Button>
+        {cartStore.orderSummary && (
+          <Button style={CartPageStyles.viewOrder} onPress={onViewOrder}>
+            {t('View order')}
+          </Button>
+        )}
       </View>
     </View>
   );

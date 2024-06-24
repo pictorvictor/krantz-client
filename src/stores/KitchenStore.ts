@@ -61,8 +61,7 @@ export class KitchenStore {
 
   @action async fetchFavouriteKitchens() {
     try {
-      //TODO: change endpoint when orders are implemented
-      const {data} = await axios.get('api/kitchen');
+      const {data} = await axios.get('api/kitchen/favourites');
       runInAction(() => {
         this.kitchensFavorites = data;
       });

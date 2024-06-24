@@ -1,18 +1,34 @@
 import {useStores} from '../../hooks/useStores';
-import {View} from 'react-native';
+import {ScrollView, TouchableOpacity, View} from 'react-native';
 import {ProfilePageStyles} from './styles';
 import {useTranslation} from 'react-i18next';
 import {IconOutline} from '@ant-design/icons-react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import theme from '../../utils/theme';
-import {BoldText, Button, ExtraBoldText, SemiBoldText} from '../../components';
+import {BoldText, ExtraBoldText, SemiBoldText} from '../../components';
+import OrderComponent from '../../components/orderComponent/OrderComponent';
+import {observer} from 'mobx-react-lite';
+import {Order} from '../../types/order.types';
+import {useNavigation} from '@react-navigation/native';
+import {Route} from '../../utils/enums';
 
-const ProfilePage = () => {
-  const {userStore, authStore} = useStores();
+const ProfilePage = observer(() => {
+  const {userStore, orderStore} = useStores();
   const {t} = useTranslation();
+  const navigation = useNavigation();
 
-  const onLogoutPress = () => {
-    authStore.logout();
+  useEffect(() => {
+    orderStore.getMyOrders();
+  }, [orderStore]);
+
+  const onOrderPress = (order: Order) => {
+    // @ts-ignore
+    navigation.navigate(Route.OrderDetails, {order});
+  };
+
+  const onOptionsPress = () => {
+    // @ts-ignore
+    navigation.navigate(Route.ProfileOptions);
   };
 
   return (
@@ -32,26 +48,31 @@ const ProfilePage = () => {
             size={30}
             color={theme.palette.textSecondary}
           />
-          <IconOutline
-            name="setting"
-            size={30}
-            color={theme.palette.textSecondary}
-          />
+          <TouchableOpacity onPress={onOptionsPress}>
+            <IconOutline
+              name="setting"
+              size={30}
+              color={theme.palette.textSecondary}
+            />
+          </TouchableOpacity>
         </View>
       </View>
       <BoldText style={ProfilePageStyles.sectionTitle}>
         {t('My orders')}
       </BoldText>
-      {/* <ScrollView contentContainerStyle={ProfilePageStyles.ordersContainer}>
-        {orders.map(order => (
-          <OrderItem key={order.id} order={order} />
+      <ScrollView
+        contentContainerStyle={ProfilePageStyles.ordersContainer}
+        showsVerticalScrollIndicator={false}>
+        {orderStore.orders.map(order => (
+          <OrderComponent
+            key={order.orderId}
+            order={order}
+            onPress={onOrderPress}
+          />
         ))}
-      </ScrollView> */}
-      <Button onPress={onLogoutPress} style={ProfilePageStyles.logoutButton}>
-        {t('Logout')}
-      </Button>
+      </ScrollView>
     </View>
   );
-};
+});
 
 export default ProfilePage;

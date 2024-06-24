@@ -34,7 +34,7 @@ export const CartPageStyles = StyleSheet.create({
   },
   paymentMethodContainer: {
     marginTop: 20,
-    paddingHorizontal: 20,
+    paddingHorizontal: 10,
   },
   paymentMethod: {
     fontSize: 18,
@@ -45,17 +45,26 @@ export const CartPageStyles = StyleSheet.create({
   placeOrderContainer: {
     alignSelf: 'center',
     paddingBottom: 20,
+    marginBottom: 10,
     width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   placeOrder: {
-    // flexGrow: 1,
+    flexGrow: 1,
   },
   observationsContainer: {
-    paddingVertical: 30,
+    marginTop: 20,
+    height: 100,
+    borderRadius: 20,
+    backgroundColor: theme.palette.grey,
   },
   observations: {
-    height: 100,
     fontSize: 14,
-    textAlignVertical: 'top',
+    alignSelf: 'auto',
+    height: '100%',
+  },
+  viewOrder: {
+    marginLeft: 10,
   },
 });

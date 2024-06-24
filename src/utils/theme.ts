@@ -15,6 +15,7 @@ const theme = {
     black: '#000000',
 
     yellow: '#F9C058',
+    green: '#98D442',
   },
 };
 

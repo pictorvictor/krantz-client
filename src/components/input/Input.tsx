@@ -12,12 +12,18 @@ const Input = React.forwardRef(
       style,
       placeholder,
       onPress,
+      multiline,
+      numberOfLines,
+      scrollEnabled,
     }: {
       value?: string;
       onChangeText?: (text: string) => void;
       style?: {[x: string]: string | number};
       placeholder?: string;
       onPress?: () => void;
+      multiline?: boolean;
+      numberOfLines?: number;
+      scrollEnabled?: boolean;
     },
     ref: LegacyRef<TextInput>,
   ) => (
@@ -28,6 +34,10 @@ const Input = React.forwardRef(
       style={{...InputStyles.inputContainer, ...style}}
       placeholderTextColor={theme.palette.textSecondary}
       onPressIn={onPress}
+      numberOfLines={numberOfLines}
+      multiline={multiline}
+      blurOnSubmit={multiline}
+      scrollEnabled={scrollEnabled}
       ref={ref}
     />
   ),

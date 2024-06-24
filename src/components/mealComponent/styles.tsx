@@ -6,6 +6,12 @@ export const MealComponentStyles = StyleSheet.create({
     flexDirection: 'row',
     borderRadius: 20,
     backgroundColor: theme.palette.white,
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
   },
   image: {
     width: 150,

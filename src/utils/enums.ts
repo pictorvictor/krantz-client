@@ -5,8 +5,13 @@ export enum Route {
   KitchenInformation = 'KitchenInformation',
   Search = 'Search',
   Cart = 'Cart',
+  CartPage = 'CartPage',
+  OrderSummary = 'OrderSummary',
   Profile = 'Profile',
   MealDetails = 'MealDetails',
+  OrderDetails = 'OrderDetails',
+  ProfilePage = 'ProfilePage',
+  ProfileOptions = 'ProfileOptions',
 }
 
 export enum PaymentMethod {

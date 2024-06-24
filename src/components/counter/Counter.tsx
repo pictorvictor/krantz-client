@@ -1,4 +1,3 @@
-import {useState, useEffect} from 'react';
 import {View, TouchableOpacity} from 'react-native';
 import {Text} from '../index';
 import {CounterStyles} from './styles';
@@ -12,21 +11,13 @@ const Counter = ({
   mealId: string;
   onQuantityChange?: (newQuantity: number, mealId: string) => void;
 }) => {
-  const [quantity, setQuantity] = useState(initialQuantity);
-
-  useEffect(() => {
-    if (onQuantityChange) {
-      onQuantityChange(quantity, mealId);
-    }
-  }, [quantity, onQuantityChange, mealId]);
-
   const incrementQuantity = () => {
-    setQuantity(quantity + 1);
+    onQuantityChange?.(initialQuantity + 1, mealId);
   };
 
   const decrementQuantity = () => {
-    if (quantity > 0) {
-      setQuantity(quantity - 1);
+    if (initialQuantity > 0) {
+      onQuantityChange?.(initialQuantity - 1, mealId);
     }
   };
 
@@ -37,7 +28,7 @@ const Counter = ({
         style={CounterStyles.button}>
         <Text style={CounterStyles.buttonText}>-</Text>
       </TouchableOpacity>
-      <Text style={CounterStyles.quantityText}>{`${quantity}`}</Text>
+      <Text style={CounterStyles.quantityText}>{`${initialQuantity}`}</Text>
       <TouchableOpacity
         onPress={incrementQuantity}
         style={CounterStyles.button}>

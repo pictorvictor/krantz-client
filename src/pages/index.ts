@@ -7,3 +7,5 @@ export {default as ProfilePage} from './profilePage/ProfilePage';
 export {default as KitchenDetailsPage} from './kitchenDetailsPage/KitchenDetailsPage';
 export {default as KitchenInformationPage} from './kitchenInformationPage/KitchenInformationPage';
 export {default as MealDetailsPage} from './mealDetailsPage/MealDetailsPage';
+export {default as OrderDetailsPage} from './orderDetailsPage/OrderDetailsPage';
+export {default as ProfileOptionsPage} from './profileOptionsPage/ProfileOptionsPage';

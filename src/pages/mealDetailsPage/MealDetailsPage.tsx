@@ -36,7 +36,7 @@ const MealDetailsPage = observer(
       navigation.goBack();
     };
 
-    const onQuantityChange = (newQuantity: number) => {
+    const onQuantityChange = (newQuantity: number, _mealId?: string) => {
       setQuantity(newQuantity);
     };
 
@@ -73,7 +73,7 @@ const MealDetailsPage = observer(
           <View style={MealDetailsPageStyles.buttonsContainer}>
             <View style={MealDetailsPageStyles.counterContainer}>
               <Counter
-                initialQuantity={1}
+                initialQuantity={quantity}
                 onQuantityChange={onQuantityChange}
                 mealId={meal.id}
               />

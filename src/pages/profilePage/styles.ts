@@ -3,12 +3,15 @@ import theme from '../../utils/theme';
 
 export const ProfilePageStyles = StyleSheet.create({
   container: {
-    paddingHorizontal: 40,
+    height: '100%',
+    paddingHorizontal: 20,
+    backgroundColor: theme.palette.backgroundGrey,
   },
   profileContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 20,
+    paddingHorizontal: 20,
   },
   userInfo: {
     flex: 1,
@@ -28,10 +31,12 @@ export const ProfilePageStyles = StyleSheet.create({
   sectionTitle: {
     fontSize: 20,
     fontWeight: 'bold',
+    marginLeft: 10,
     marginBottom: 10,
     color: theme.palette.textPrimary,
   },
   ordersContainer: {
+    width: '100%',
     paddingBottom: 20,
   },
   iconsContainer: {
@@ -40,7 +45,11 @@ export const ProfilePageStyles = StyleSheet.create({
     width: 80,
     marginBottom: 20,
   },
+  logoutButtonContainer: {
+    marginBottom: 30,
+    marginTop: 'auto',
+  },
   logoutButton: {
-    marginTop: 20,
+    margin: 'auto',
   },
 });

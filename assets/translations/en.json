@@ -27,6 +27,9 @@
     "currency": "lei",
     "CARD_ONLINE": "Card online",
     "CASH_ON_SITE": "Cash on site",
-    "CARD_ON_SITE": "Card on site"
+    "CARD_ON_SITE": "Card on site",
+    "PLACED": "PLACED",
+    "CANCELLED": "CANCELLED",
+    "PICKED_UP": "PICKED UP"
   }
 }

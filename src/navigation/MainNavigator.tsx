@@ -2,11 +2,13 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import React from 'react';
 
 import {BottomTabBar} from '../components';
-import {CartPage, ProfilePage, SearchPage} from '../pages';
+import {SearchPage} from '../pages';
 import {Route} from '../utils/enums';
 import HomeNavigator from './HomeNavigator';
 import {useStores} from '../hooks/useStores';
 import {observer} from 'mobx-react-lite';
+import CartNavigator from './CartNavigator';
+import ProfileNavigator from './ProfileNavigator';
 
 const Tabs = createBottomTabNavigator<MainBottomTabBarParamList>();
 
@@ -30,8 +32,8 @@ const MainNavigator = observer(() => {
       }}>
       <Tabs.Screen name={Route.Home} component={HomeNavigator} />
       <Tabs.Screen name={Route.Search} component={SearchPage} />
-      <Tabs.Screen name={Route.Cart} component={CartPage} />
-      <Tabs.Screen name={Route.Profile} component={ProfilePage} />
+      <Tabs.Screen name={Route.Cart} component={CartNavigator} />
+      <Tabs.Screen name={Route.Profile} component={ProfileNavigator} />
     </Tabs.Navigator>
   );
 });

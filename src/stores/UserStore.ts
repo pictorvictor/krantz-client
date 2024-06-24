@@ -3,7 +3,7 @@ import {action, makeAutoObservable, observable, runInAction} from 'mobx';
 import axios from '../utils/axios';
 
 export class UserStore {
-  @observable firstName: string = 'Victor';
+  @observable firstName: string = '';
   @observable lastName: string = '';
   @observable email: string = '';
 
@@ -21,8 +21,10 @@ export class UserStore {
           this.email = data?.email;
         });
       }
+      return true;
     } catch (e: any) {
       console.error(e);
+      return false;
     }
   }
 }

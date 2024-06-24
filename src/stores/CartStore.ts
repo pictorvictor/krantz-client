@@ -1,12 +1,17 @@
-import {action, makeAutoObservable, observable} from 'mobx';
-import {Cart, CartItem} from '../types/cart.types';
+import {action, makeAutoObservable, observable, runInAction} from 'mobx';
 import {PaymentMethod} from '../utils/enums';
 import {Kitchen} from '../types/kitchen.types';
+import {Cart, CartItem} from '../types/cart.types';
+import {OrderSummary} from '../types/order.types';
+import axios from '../utils/axios';
+import {OrderStore} from './OrderStore';
 
 export class CartStore {
   @observable isCartEmpty: boolean = true;
   @observable cart?: Cart;
-  constructor() {
+  @observable orderSummary?: OrderSummary;
+
+  constructor(private orderStore: OrderStore) {
     makeAutoObservable(this);
   }
 
@@ -26,6 +31,13 @@ export class CartStore {
       this.clearCart();
       this.createCart(kitchen);
     }
+    const foundCartItem = this.cart?.cartItems.find(
+      cartItem => cartItem.meal.id === mealItem.meal.id,
+    );
+    if (foundCartItem) {
+      foundCartItem.quantity += mealItem.quantity;
+      return;
+    }
     this.cart?.cartItems.push(mealItem);
     this.setIsCartEmpty(false);
   }
@@ -33,6 +45,7 @@ export class CartStore {
   @action clearCart() {
     this.cart = undefined;
     this.setIsCartEmpty(true);
+    this.orderSummary = undefined;
   }
 
   @action setIsCartEmpty(isCartEmpty: boolean) {
@@ -59,6 +72,32 @@ export class CartStore {
           cartItem => cartItem.meal.id !== mealId,
         );
       }
+    }
+  }
+
+  @action setPaymentMethod(paymentMethod: PaymentMethod) {
+    if (this.cart) {
+      this.cart.paymentMethod = paymentMethod;
+    }
+  }
+
+  @action async placeOrder() {
+    try {
+      const {data} = await axios.post('api/order/place', {
+        kitchenId: this.cart?.kitchen?.id,
+        observations: this.cart?.observations,
+        paymentMethod: this.cart?.paymentMethod,
+        items: this.cart?.cartItems.map(cartItem => ({
+          mealId: cartItem.meal.id,
+          quantity: cartItem.quantity,
+        })),
+      });
+      runInAction(() => {
+        this.orderSummary = data;
+        this.orderStore.getMyOrders();
+      });
+    } catch (err: any) {
+      console.error('Error placing order:', err);
     }
   }
 }
