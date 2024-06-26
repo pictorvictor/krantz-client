@@ -20,4 +20,15 @@ export class OrderStore {
       console.error(e);
     }
   }
+
+  @action async reviewOrder(orderId: number, rating: number) {
+    try {
+      axios.post('api/order/review', {
+        orderId,
+        rating,
+      });
+    } catch (e: any) {
+      console.error(e.message);
+    }
+  }
 }

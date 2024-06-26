@@ -6,4 +6,11 @@ export const ButtonStyles = StyleSheet.create({
     color: theme.palette.white,
     fontSize: 20,
   },
+  secondaryButton: {
+    backgroundColor: theme.palette.backgroundGrey,
+  },
+  secondaryButtonText: {
+    color: theme.palette.primary,
+    fontSize: 20,
+  },
 });

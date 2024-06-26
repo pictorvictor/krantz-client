@@ -1,31 +1,31 @@
+import {useNavigation} from '@react-navigation/native';
 import {StackScreenProps} from '@react-navigation/stack';
-import React from 'react';
+import {observer} from 'mobx-react-lite';
+import moment from 'moment';
+import React, {useState} from 'react';
+import {useTranslation} from 'react-i18next';
 import {ImageBackground, ScrollView, StatusBar, View} from 'react-native';
 import {
-  Button,
   BackButton,
   BoldText,
+  Button,
   LightText,
+  RatingBar,
   SemiBoldText,
   Text,
 } from '../../components';
+import {useStores} from '../../hooks/useStores';
 import {HomeStackParamList} from '../../navigation/HomeNavigator';
 import {Route} from '../../utils/enums';
 import {OrderDetailsPageStyles} from './styles';
-import {useTranslation} from 'react-i18next';
-import {useStores} from '../../hooks/useStores';
-import {observer} from 'mobx-react-lite';
-import moment from 'moment';
-import {useNavigation} from '@react-navigation/native';
-import {IconFill} from '@ant-design/icons-react-native';
-import theme from '../../utils/theme';
 
 const OrderDetailsPage = observer(
   ({route}: StackScreenProps<HomeStackParamList, Route.OrderDetails>) => {
-    const {cartStore} = useStores();
+    const {cartStore, orderStore} = useStores();
     const {t} = useTranslation();
     const {order} = route.params;
     const navigation = useNavigation();
+    const [rating, setRating] = useState(0);
 
     const onAddToCart = () => {
       order.items.forEach(item => {
@@ -40,6 +40,8 @@ const OrderDetailsPage = observer(
       // @ts-ignore
       navigation.navigate(Route.Cart);
     };
+
+    const onSaveReview = () => orderStore.reviewOrder(order.orderId, rating);
 
     return (
       <View style={OrderDetailsPageStyles().container}>
@@ -97,7 +99,23 @@ const OrderDetailsPage = observer(
             </LightText>
           </View>
           <View style={OrderDetailsPageStyles().bottomContainer}>
-            <View style={OrderDetailsPageStyles().feedbackContainer}>
+            {!order.hasUserReviewed && (
+              <>
+                <View style={OrderDetailsPageStyles().feedbackContainer}>
+                  <Text style={OrderDetailsPageStyles().feedbackLabel}>
+                    {t('Were you satisfied?')}
+                  </Text>
+                  <RatingBar rating={rating} onRatingBarClick={setRating} />
+                </View>
+                <Button
+                  onPress={onSaveReview}
+                  style={OrderDetailsPageStyles().saveReviewButton}
+                  type="secondary">
+                  {t('saveReview')}
+                </Button>
+              </>
+            )}
+            {/* <View style={OrderDetailsPageStyles().feedbackContainer}>
               <Text style={OrderDetailsPageStyles().feedbackLabel}>
                 {t('Were you satisfied?')}
               </Text>
@@ -105,7 +123,7 @@ const OrderDetailsPage = observer(
                 {t('Leave a review!')}
               </SemiBoldText>
               <IconFill name="star" color={theme.palette.yellow} size={20} />
-            </View>
+            </View> */}
             <Button onPress={onAddToCart}>
               {t('Add these items to cart')}
             </Button>

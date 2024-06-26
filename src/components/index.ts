@@ -21,3 +21,4 @@ export {default as DiscountedPrice} from './discountedPrice/DiscountedPrice';
 export {default as KitchenListComponent} from './kitchenListComponent/KitchenListComponent';
 export {default as Counter} from './counter/Counter';
 export {default as RadioGroup} from './radioGroup/RadioGroup';
+export {default as RatingBar} from './ratingBar/RatingBar';

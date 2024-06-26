@@ -126,15 +126,19 @@ export const OrderDetailsPageStyles = (orderStatus?: OrderStatus) =>
     },
     feedbackContainer: {
       flexDirection: 'row',
-      justifyContent: 'center',
-      marginBottom: 10,
+      alignItems: 'center',
+      width: '100%',
     },
     feedbackLabel: {
-      fontSize: 16,
+      fontSize: 18,
       color: theme.palette.textTertiary,
     },
     feedback: {
       fontSize: 16,
       color: theme.palette.primary,
+    },
+    saveReviewButton: {
+      marginTop: 10,
+      marginBottom: 50,
     },
   });

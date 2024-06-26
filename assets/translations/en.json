@@ -30,6 +30,8 @@
     "CARD_ON_SITE": "Card on site",
     "PLACED": "PLACED",
     "CANCELLED": "CANCELLED",
-    "PICKED_UP": "PICKED UP"
+    "PICKED_UP": "PICKED UP",
+    "yourComment": "Your Comment",
+    "saveReview": "Save Review"
   }
 }
