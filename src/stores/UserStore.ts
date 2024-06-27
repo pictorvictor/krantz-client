@@ -1,4 +1,5 @@
 import {action, makeAutoObservable, observable, runInAction} from 'mobx';
+import moment from 'moment';
 
 import axios from '../utils/axios';
 
@@ -6,6 +7,7 @@ export class UserStore {
   @observable firstName: string = '';
   @observable lastName: string = '';
   @observable email: string = '';
+  @observable statistics: any;
 
   constructor() {
     makeAutoObservable(this);
@@ -25,6 +27,28 @@ export class UserStore {
     } catch (e: any) {
       console.error(e);
       return false;
+    }
+  }
+
+  @action async getStatistics() {
+    try {
+      const {data} = await axios.get('api/user/statistics');
+      if (data?.length) {
+        runInAction(() => {
+          this.statistics = data?.reduce(
+            (
+              res: {labels: string[]; data: number[]},
+              curr: {month: string; totalco2saved: number},
+            ) => ({
+              labels: [...res?.labels, moment(curr?.month).format('MMM')],
+              data: [...res?.data, Math.round(curr?.totalco2saved)],
+            }),
+            {labels: [], data: []},
+          );
+        });
+      }
+    } catch (e: any) {
+      console.error(e);
     }
   }
 }

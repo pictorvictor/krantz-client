@@ -8,17 +8,17 @@ const stars = [1, 2, 3, 4, 5];
 
 const RatingBar = ({
   rating,
-  onRatingBarClick,
+  onRatingBarPress,
 }: {
   rating: number;
-  onRatingBarClick: (rating: number) => void;
+  onRatingBarPress: (rating: number) => void;
 }) => {
-  const onStarClick = (value: number) => () => onRatingBarClick(value);
+  const onStarPress = (value: number) => () => onRatingBarPress(value);
 
   return (
     <View style={RatingBarStyles.container}>
       {stars.map(item => (
-        <TouchableOpacity onPress={onStarClick(item)} key={item}>
+        <TouchableOpacity onPress={onStarPress(item)} key={item}>
           {rating >= item ? (
             <IconFill name="star" color={theme.palette.yellow} size={35} />
           ) : (

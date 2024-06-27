@@ -1,7 +1,9 @@
-import {ProfileOptionsPageStyles} from './styles';
-import {useTranslation} from 'react-i18next';
 import {IconOutline} from '@ant-design/icons-react-native';
+import {useNavigation} from '@react-navigation/native';
+import {observer} from 'mobx-react-lite';
 import React from 'react';
+import {useTranslation} from 'react-i18next';
+import {TouchableOpacity, View} from 'react-native';
 import {
   BackButton,
   BoldText,
@@ -9,17 +11,22 @@ import {
   SemiBoldText,
   Text,
 } from '../../components';
-import {observer} from 'mobx-react-lite';
-import {View} from 'react-native';
 import {useStores} from '../../hooks/useStores';
+import {ProfileOptionsPageStyles} from './styles';
+import {Route} from '../../utils/enums';
 
 const ProfileOptionsPage = observer(() => {
   const {authStore} = useStores();
   const {t} = useTranslation();
+  const navigation = useNavigation();
 
   const onLogout = () => {
     authStore.logout();
   };
+
+  const onStatisticsPress = () =>
+    // @ts-ignore
+    navigation.navigate(Route.Statistics);
 
   return (
     <View style={ProfileOptionsPageStyles.container}>
@@ -57,16 +64,22 @@ const ProfileOptionsPage = observer(() => {
         </View>
         <View style={ProfileOptionsPageStyles.section}>
           <View style={ProfileOptionsPageStyles.iconContainer}>
-            <IconOutline
-              name="info"
-              size={30}
-              style={ProfileOptionsPageStyles.bold}
-            />
+            <IconOutline name="info-circle" size={24} />
           </View>
           <BoldText style={ProfileOptionsPageStyles.label}>
             {t('About us')}
           </BoldText>
         </View>
+        <TouchableOpacity
+          style={ProfileOptionsPageStyles.section}
+          onPress={onStatisticsPress}>
+          <View style={ProfileOptionsPageStyles.iconContainer}>
+            <IconOutline name="bar-chart" size={24} />
+          </View>
+          <BoldText style={ProfileOptionsPageStyles.label}>
+            {t('statistics')}
+          </BoldText>
+        </TouchableOpacity>
       </View>
       <Button style={ProfileOptionsPageStyles.logoutButton} onPress={onLogout}>
         {t('Log out')}

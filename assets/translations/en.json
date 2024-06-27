@@ -32,6 +32,9 @@
     "CANCELLED": "CANCELLED",
     "PICKED_UP": "PICKED UP",
     "yourComment": "Your Comment",
-    "saveReview": "Save Review"
+    "saveReview": "Save Review",
+    "statistics": "Statistics",
+    "co2SavingsTitle": "CO2 Savings by month",
+    "co2SavingsDescription": "This bar chart shows the distribution of CO2 savings by month"
   }
 }

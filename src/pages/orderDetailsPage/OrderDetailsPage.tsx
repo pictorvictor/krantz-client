@@ -105,7 +105,7 @@ const OrderDetailsPage = observer(
                   <Text style={OrderDetailsPageStyles().feedbackLabel}>
                     {t('Were you satisfied?')}
                   </Text>
-                  <RatingBar rating={rating} onRatingBarClick={setRating} />
+                  <RatingBar rating={rating} onRatingBarPress={setRating} />
                 </View>
                 <Button
                   onPress={onSaveReview}

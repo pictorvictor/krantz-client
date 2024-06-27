@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {createStackNavigator} from '@react-navigation/stack';
-import {ProfileOptionsPage, ProfilePage} from '../pages';
+import {ProfileOptionsPage, ProfilePage, StatisticsPage} from '../pages';
 import {Route} from '../utils/enums';
 
 const Stack = createStackNavigator<ProfileStackParamList>();
@@ -9,6 +9,7 @@ const Stack = createStackNavigator<ProfileStackParamList>();
 export type ProfileStackParamList = {
   [Route.ProfilePage]: undefined;
   [Route.ProfileOptions]: undefined;
+  [Route.Statistics]: undefined;
 };
 
 const ProfileNavigator = () => {
@@ -22,6 +23,7 @@ const ProfileNavigator = () => {
         name={Route.ProfileOptions}
         component={ProfileOptionsPage}
       />
+      <Stack.Screen name={Route.Statistics} component={StatisticsPage} />
     </Stack.Navigator>
   );
 };

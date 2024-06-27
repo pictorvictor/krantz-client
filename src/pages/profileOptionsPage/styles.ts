@@ -31,7 +31,7 @@ export const ProfileOptionsPageStyles = StyleSheet.create({
     alignItems: 'center',
   },
   dollar: {
-    fontSize: 24,
+    fontSize: 22,
     color: theme.palette.textPrimary,
     textAlign: 'center',
   },

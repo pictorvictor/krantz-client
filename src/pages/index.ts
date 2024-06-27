@@ -9,3 +9,4 @@ export {default as KitchenInformationPage} from './kitchenInformationPage/Kitche
 export {default as MealDetailsPage} from './mealDetailsPage/MealDetailsPage';
 export {default as OrderDetailsPage} from './orderDetailsPage/OrderDetailsPage';
 export {default as ProfileOptionsPage} from './profileOptionsPage/ProfileOptionsPage';
+export {default as StatisticsPage} from './statisticsPage/StatisticsPage';

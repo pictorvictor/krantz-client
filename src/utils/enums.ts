@@ -12,6 +12,7 @@ export enum Route {
   OrderDetails = 'OrderDetails',
   ProfilePage = 'ProfilePage',
   ProfileOptions = 'ProfileOptions',
+  Statistics = 'Statistics',
 }
 
 export enum PaymentMethod {
