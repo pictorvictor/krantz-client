@@ -24,7 +24,7 @@ const HomePage = observer(
     useEffect(() => {
       userStore.me();
       kitchenStore.searchKitchensByProximity();
-      kitchenStore.fetchFavouriteKitchens();
+      kitchenStore.getFavouriteKitchens();
     }, [userStore, kitchenStore]);
 
     const onSearchInputPress = () => {

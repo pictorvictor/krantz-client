@@ -1,22 +1,35 @@
-import React from 'react';
-import {
-  Image,
-  View,
-  TouchableOpacity,
-  GestureResponderEvent,
-} from 'react-native';
-import {BoldText, LightText, RegularText, SemiBoldText} from '../index';
-import {OrderComponentStyles} from './styles';
-import {Order} from '../../types/order.types';
 import {t} from 'i18next';
 import moment from 'moment';
+import React from 'react';
+import {
+  GestureResponderEvent,
+  Image,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import {Order, OrderStatus} from '../../types/order.types';
+import {
+  ArrowButton,
+  BoldText,
+  LightText,
+  RegularText,
+  SemiBoldText,
+} from '../index';
+import {OrderComponentStyles} from './styles';
 
 interface OrderComponentProps {
   order: Order;
   onPress?: (order: Order) => void;
+  onArrowPress?: () => void;
+  noPicture?: boolean;
 }
 
-const OrderComponent: React.FC<OrderComponentProps> = ({order, onPress}) => {
+const OrderComponent: React.FC<OrderComponentProps> = ({
+  order,
+  onPress,
+  onArrowPress,
+  noPicture,
+}) => {
   const handlePress = (_event: GestureResponderEvent) => {
     if (onPress) {
       onPress(order);
@@ -25,25 +38,27 @@ const OrderComponent: React.FC<OrderComponentProps> = ({order, onPress}) => {
 
   return (
     <TouchableOpacity onPress={handlePress} disabled={!onPress}>
-      <View style={OrderComponentStyles().container}>
-        <Image
-          source={{uri: order.kitchen.kitchenImage}}
-          style={OrderComponentStyles().image}
-        />
-        <View style={OrderComponentStyles().infoContainer}>
+      <View style={OrderComponentStyles(undefined, noPicture).container}>
+        {!noPicture && (
+          <Image
+            source={{uri: order.kitchen.kitchenImage}}
+            style={OrderComponentStyles().image}
+          />
+        )}
+        <View style={OrderComponentStyles(undefined, noPicture).infoContainer}>
           <BoldText
             style={OrderComponentStyles().kitchenName}
             numberOfLines={1}
             ellipsizeMode={'tail'}>
-            {order.kitchen.name}
+            {order.kitchen?.name}
           </BoldText>
           {order.items.slice(0, 2).map(item => (
             <SemiBoldText
-              key={item.meal.id}
+              key={item.meal?.id}
               style={OrderComponentStyles().itemText}
               numberOfLines={1}
               ellipsizeMode="tail">
-              {`${item.quantity} x ${item.meal.name}`}
+              {`${item.quantity} x ${item.meal?.name}`}
             </SemiBoldText>
           ))}
           {order.items.length > 2 && (
@@ -60,18 +75,24 @@ const OrderComponent: React.FC<OrderComponentProps> = ({order, onPress}) => {
                 {t('lei')}
               </LightText>
             </View>
-            <View style={OrderComponentStyles().statusAndDateContainer}>
-              <RegularText style={OrderComponentStyles().date}>
-                {moment(order.createdAt).format('D MMM [at] HH:mm')}
-              </RegularText>
-              <View style={OrderComponentStyles(order.status).statusContainer}>
-                <SemiBoldText style={OrderComponentStyles().status}>
-                  {t(order.status)}
-                </SemiBoldText>
+            {!noPicture && (
+              <View style={OrderComponentStyles().statusAndDateContainer}>
+                <RegularText style={OrderComponentStyles().date}>
+                  {moment(order.createdAt).format('D MMM [at] HH:mm')}
+                </RegularText>
+                <View
+                  style={OrderComponentStyles(order.status).statusContainer}>
+                  <SemiBoldText style={OrderComponentStyles().status}>
+                    {t(order.status)}
+                  </SemiBoldText>
+                </View>
               </View>
-            </View>
+            )}
           </View>
         </View>
+        {noPicture && order.status !== OrderStatus.PICKED_UP && (
+          <ArrowButton onPress={onArrowPress as any} />
+        )}
       </View>
     </TouchableOpacity>
   );

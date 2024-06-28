@@ -22,3 +22,4 @@ export {default as KitchenListComponent} from './kitchenListComponent/KitchenLis
 export {default as Counter} from './counter/Counter';
 export {default as RadioGroup} from './radioGroup/RadioGroup';
 export {default as RatingBar} from './ratingBar/RatingBar';
+export {default as ArrowButton} from './arrowButton/ArrowButton';

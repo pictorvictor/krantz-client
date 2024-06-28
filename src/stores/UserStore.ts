@@ -2,12 +2,14 @@ import {action, makeAutoObservable, observable, runInAction} from 'mobx';
 import moment from 'moment';
 
 import axios from '../utils/axios';
+import {UserRole} from '../utils/enums';
 
 export class UserStore {
   @observable firstName: string = '';
   @observable lastName: string = '';
   @observable email: string = '';
   @observable statistics: any;
+  @observable isProvider = false;
 
   constructor() {
     makeAutoObservable(this);
@@ -21,6 +23,7 @@ export class UserStore {
           this.firstName = data?.firstName;
           this.lastName = data?.lastName;
           this.email = data?.email;
+          this.isProvider = data?.role === UserRole.PROVIDER;
         });
       }
       return true;

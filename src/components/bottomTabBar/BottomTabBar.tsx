@@ -13,6 +13,7 @@ const MenuOptionMapping: {[key: string]: any} = {
   [Route.Search]: 'search',
   [Route.Cart]: 'shopping-cart',
   [Route.Profile]: 'user',
+  [Route.KitchenManagement]: 'shop',
 };
 
 interface BottomTabBarPropsWithCart extends BottomTabBarProps {

@@ -33,7 +33,7 @@ const KitchenDetailsPage = observer(
     };
 
     useEffect(() => {
-      kitchenStore.fetchMeals(kitchen.id);
+      kitchenStore.getMeals(kitchen.id);
     }, [kitchen.id, kitchenStore]);
 
     return (
@@ -78,7 +78,7 @@ const KitchenDetailsPage = observer(
             </BoldText>
           </View>
           <ScrollView showsVerticalScrollIndicator={false}>
-            {kitchenStore.getMeals(kitchen.id).map(meal => (
+            {kitchenStore.getKitchenMeals(kitchen.id).map(meal => (
               <TouchableOpacity
                 key={meal.id}
                 style={KitchenDetailsPageStyles.mealContainer}>

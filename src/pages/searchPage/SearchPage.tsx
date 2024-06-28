@@ -29,7 +29,7 @@ const SearchPage = observer(
           searchInputRef.current.focus();
         }
       }
-      kitchenStore.fetchKitchenTypes();
+      kitchenStore.getKitchenTypes();
     }, [kitchenStore, searchInputRef, route.params?.fromHome]);
 
     const debouncedSearch = useMemo(

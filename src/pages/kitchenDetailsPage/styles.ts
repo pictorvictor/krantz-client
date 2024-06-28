@@ -51,7 +51,6 @@ export const KitchenDetailsPageStyles = StyleSheet.create({
     shadowRadius: 2,
   },
   restaurantName: {
-    fontWeight: 'bold',
     alignSelf: 'center',
     fontSize: 36,
     lineHeight: 40,

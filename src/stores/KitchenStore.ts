@@ -10,19 +10,20 @@ export class KitchenStore {
   @observable kitchensByProximity: Kitchen[] = [];
   @observable kitchensFavorites: Kitchen[] = [];
   @observable kitchenMeals: Map<string, Meal[]> = new Map();
+  @observable providerKitchen?: Kitchen;
 
   constructor() {
     makeAutoObservable(this);
   }
 
-  @action async fetchKitchenTypes() {
+  @action async getKitchenTypes() {
     try {
       const {data} = await axios.get('api/kitchen/types');
       runInAction(() => {
         this.kitchenTypes = data;
       });
     } catch (error) {
-      console.error('Error fetching kitchen types:', error);
+      console.error('Error getting kitchen types:', error);
     }
   }
 
@@ -36,7 +37,7 @@ export class KitchenStore {
         this.kitchens = data;
       });
     } catch (error) {
-      console.error('Error fetching kitchens:', error);
+      console.error('Error getting kitchens:', error);
     }
   }
 
@@ -55,33 +56,33 @@ export class KitchenStore {
         });
       });
     } catch (error) {
-      console.error('Error fetching kitchens by proximity:', error);
+      console.error('Error getting kitchens by proximity:', error);
     }
   }
 
-  @action async fetchFavouriteKitchens() {
+  @action async getFavouriteKitchens() {
     try {
       const {data} = await axios.get('api/kitchen/favourites');
       runInAction(() => {
         this.kitchensFavorites = data;
       });
     } catch (error) {
-      console.error('Error fetching favourite kitchens:', error);
+      console.error('Error getting favourite kitchens:', error);
     }
   }
 
-  @action async fetchKitchenById(id: string) {
+  @action async getKitchenById(id: string) {
     try {
       const {data} = await axios.get(`api/kitchen/${id}`);
       runInAction(() => {
         this.kitchenMeals = data.meals;
       });
     } catch (error) {
-      console.error('Error fetching kitchen by id:', error);
+      console.error('Error getting kitchen by id:', error);
     }
   }
 
-  @action async fetchMeals(kitchenId: string) {
+  @action async getMeals(kitchenId: string) {
     if (this.kitchenMeals.has(kitchenId)) {
       return;
     }
@@ -91,11 +92,22 @@ export class KitchenStore {
         this.kitchenMeals.set(kitchenId, data.meals);
       });
     } catch (error) {
-      console.error('Error fetching meals:', error);
+      console.error('Error getting meals:', error);
     }
   }
 
-  getMeals(kitchenId: string) {
+  @action async getProviderKitchen() {
+    try {
+      const {data} = await axios.get('api/kitchen/self');
+      runInAction(() => {
+        this.providerKitchen = data;
+      });
+    } catch (error) {
+      console.error('Error getting provider kitchen:', error);
+    }
+  }
+
+  getKitchenMeals(kitchenId: string) {
     return this.kitchenMeals.get(kitchenId) || [];
   }
 }
