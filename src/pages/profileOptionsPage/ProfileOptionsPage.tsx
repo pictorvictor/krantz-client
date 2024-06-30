@@ -24,6 +24,10 @@ const ProfileOptionsPage = observer(() => {
     authStore.logout();
   };
 
+  const onBecomeOurPartnerPress = () =>
+    // @ts-ignore
+    navigation.navigate(Route.BecomeOurPartner);
+
   const onStatisticsPress = () =>
     // @ts-ignore
     navigation.navigate(Route.Statistics);
@@ -54,14 +58,16 @@ const ProfileOptionsPage = observer(() => {
             <Text style={ProfileOptionsPageStyles.cardInfo}>{'09/28'}</Text>
           </View>
         </View>
-        <View style={ProfileOptionsPageStyles.section}>
+        <TouchableOpacity
+          style={ProfileOptionsPageStyles.section}
+          onPress={onBecomeOurPartnerPress}>
           <View style={ProfileOptionsPageStyles.iconContainer}>
             <IconOutline name="usergroup-add" size={24} />
           </View>
           <BoldText style={ProfileOptionsPageStyles.label}>
             {t('Become a partner')}
           </BoldText>
-        </View>
+        </TouchableOpacity>
         <View style={ProfileOptionsPageStyles.section}>
           <View style={ProfileOptionsPageStyles.iconContainer}>
             <IconOutline name="info-circle" size={24} />

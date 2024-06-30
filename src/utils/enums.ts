@@ -14,6 +14,7 @@ export enum Route {
   ProfileOptions = 'ProfileOptions',
   Statistics = 'Statistics',
   KitchenManagement = 'Restaurant',
+  BecomeOurPartner = 'BecomeOurPartner',
 }
 
 export enum PaymentMethod {

@@ -35,6 +35,23 @@
     "saveReview": "Save Review",
     "statistics": "Statistics",
     "co2SavingsTitle": "CO2 Savings by month",
-    "co2SavingsDescription": "This bar chart shows the distribution of CO2 savings by month"
+    "co2SavingsDescription": "This bar chart shows the distribution of CO2 savings by month",
+    "becomeOurPartner": "Become our partner",
+    "doYouHaveLeftoverFood": "Do you have leftover food in your restaurant and don’t have what to do with it? Join us now!",
+    "yourPersonalData": "Your personal data will get overwritten with the information you provided",
+    "generalInfo": "General info",
+    "restaurantName": "Restaurant name",
+    "restaurantTypes": "Restaurant types",
+    "description": "Description",
+    "contact": "Contact",
+    "email": "Email",
+    "phone": "Phone",
+    "companyInfo": "Company info",
+    "companyName": "Company name",
+    "cui": "CUI",
+    "address": "Address",
+    "regCom": "RegCom",
+    "additionalInfo": "Additional info",
+    "workingHours": "Working hours"
   }
 }

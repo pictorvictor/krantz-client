@@ -104,7 +104,7 @@ const CartPage = observer(() => {
             placeholder={t('Observations')}
             style={CartPageStyles.observations}
             numberOfLines={1}
-            multiline={true}
+            multiline
           />
         </View>
       </ScrollView>

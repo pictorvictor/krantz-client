@@ -41,6 +41,7 @@ export enum KitchenType {
 export interface Kitchen {
   id: string;
   name: string;
+  description: string;
   types: KitchenType[];
   workingHours: WorkingHours[];
   rating: number;

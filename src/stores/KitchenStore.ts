@@ -107,6 +107,15 @@ export class KitchenStore {
     }
   }
 
+  @action async becomeOurPartner(kitchen: Partial<Kitchen>) {
+    console.log(kitchen);
+    try {
+      await axios.post('api/kitchen/become-our-partner', {...kitchen});
+    } catch (error) {
+      console.error('Error becoming our partner:', error);
+    }
+  }
+
   getKitchenMeals(kitchenId: string) {
     return this.kitchenMeals.get(kitchenId) || [];
   }
