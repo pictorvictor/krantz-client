@@ -1,27 +1,22 @@
-import {Tabs} from '@ant-design/react-native';
 import {observer} from 'mobx-react-lite';
 import React, {useEffect, useState} from 'react';
 import {useTranslation} from 'react-i18next';
-import {ImageBackground, ScrollView, StatusBar, View} from 'react-native';
-import {BoldText} from '../../components';
-import OrderComponent from '../../components/orderComponent/OrderComponent';
+import {ScrollView, View} from 'react-native';
+import {ExtraBoldText, Multiselect} from '../../components';
 import {useStores} from '../../hooks/useStores';
 import {Order, OrderStatus} from '../../types/order.types';
-import theme from '../../utils/theme';
+import OrderItem from './OrderItem';
 import {KitchenManagementPageStyles} from './styles';
 
 const KitchenManagementPage = observer(() => {
   const {t} = useTranslation();
   const {kitchenStore, orderStore} = useStores();
-  const [activeTab, setActiveTab] = useState({
-    key: OrderStatus.PLACED,
-    title: t(OrderStatus.PLACED),
-  });
+  const [activeTabs, setActiveTab] = useState([OrderStatus.PLACED]);
 
   const tabs = [
-    {key: OrderStatus.PLACED, title: t(OrderStatus.PLACED)},
-    {key: OrderStatus.CONFIRMED, title: t(OrderStatus.CONFIRMED)},
-    {key: OrderStatus.PICKED_UP, title: t(OrderStatus.PICKED_UP)},
+    {value: OrderStatus.PLACED, label: t(OrderStatus.PLACED)},
+    {value: OrderStatus.CONFIRMED, label: t(OrderStatus.CONFIRMED)},
+    {value: OrderStatus.PICKED_UP, label: t(OrderStatus.PICKED_UP)},
   ];
 
   useEffect(() => {
@@ -39,10 +34,14 @@ const KitchenManagementPage = observer(() => {
     orderStore.getKitchenOrders();
   };
 
+  const onTabChange = (value: string) => {
+    setActiveTab([value as OrderStatus]);
+  };
+
   return (
     <View style={KitchenManagementPageStyles.container}>
-      <StatusBar backgroundColor="transparent" translucent />
-      <ImageBackground
+      {/* <StatusBar backgroundColor="transparent" translucent /> */}
+      {/* <ImageBackground
         source={{uri: kitchenStore.providerKitchen?.kitchenImage}}
         style={KitchenManagementPageStyles.imageBackground}
         imageStyle={KitchenManagementPageStyles.image}>
@@ -62,16 +61,24 @@ const KitchenManagementPage = observer(() => {
             />
           </View>
         </View>
-      </ImageBackground>
+      </ImageBackground> */}
+      <ExtraBoldText style={KitchenManagementPageStyles.ordersTitle}>
+        {t('orders')}
+      </ExtraBoldText>
+      <Multiselect
+        values={tabs}
+        selectedValues={activeTabs}
+        onValuePress={onTabChange}
+        single
+      />
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={KitchenManagementPageStyles.orders}>
         {/* @ts-ignore */}
-        {orderStore.kitchenOrders?.[activeTab?.key]?.map((order: Order) => (
-          <OrderComponent
+        {orderStore.kitchenOrders?.[activeTabs?.[0]]?.map((order: Order) => (
+          <OrderItem
             order={order}
             key={order.orderId}
-            noPicture
             onArrowPress={updateOrderStatus(order)}
           />
         ))}

@@ -72,6 +72,7 @@ export const OrderComponentStyles = (
       padding: 5,
       textAlign: 'center',
       borderRadius: 10,
+      textTransform: 'uppercase',
     },
     date: {
       color: theme.palette.textTertiary,

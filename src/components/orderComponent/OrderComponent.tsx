@@ -8,9 +8,10 @@ import {
   View,
 } from 'react-native';
 import {Order, OrderStatus} from '../../types/order.types';
+import theme from '../../utils/theme';
 import {
-  ArrowButton,
   BoldText,
+  IconButton,
   LightText,
   RegularText,
   SemiBoldText,
@@ -91,7 +92,12 @@ const OrderComponent: React.FC<OrderComponentProps> = ({
           </View>
         </View>
         {noPicture && order.status !== OrderStatus.PICKED_UP && (
-          <ArrowButton onPress={onArrowPress as any} />
+          <IconButton
+            backgroundColor={theme.palette.primary}
+            iconColor={theme.palette.white}
+            iconName="right"
+            onPress={onArrowPress as any}
+          />
         )}
       </View>
     </TouchableOpacity>

@@ -1,9 +1,16 @@
-import React from 'react';
-import {View, ScrollView} from 'react-native';
-import {observer} from 'mobx-react-lite';
-import {BoldText, Text, BackButton, LightText} from '../../components';
-import {useStores} from '../../hooks/useStores';
 import {t} from 'i18next';
+import {observer} from 'mobx-react-lite';
+import React from 'react';
+import {ScrollView, View} from 'react-native';
+import Svg from 'react-native-svg';
+import {
+  BackButton,
+  BoldText,
+  LightText,
+  Text,
+  ZigZagBorder,
+} from '../../components';
+import {useStores} from '../../hooks/useStores';
 import {OrderSummaryPageStyles} from './styles';
 
 const OrderSummaryPage = observer(() => {
@@ -95,6 +102,9 @@ const OrderSummaryPage = observer(() => {
             </Text>
           </View>
         </View>
+        <Svg height={10}>
+          <ZigZagBorder />
+        </Svg>
       </ScrollView>
     </View>
   );

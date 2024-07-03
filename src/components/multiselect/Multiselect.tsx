@@ -5,10 +5,12 @@ const Multiselect = ({
   values,
   selectedValues,
   onValuePress,
+  single,
 }: {
   values: {value: string; label: string}[];
   selectedValues: string[];
   onValuePress: (value: string) => void;
+  single?: boolean;
 }) => {
   const onMultiselectItemPress = (value: string) => () => {
     onValuePress && onValuePress(value);
@@ -21,7 +23,7 @@ const Multiselect = ({
         return (
           <TouchableOpacity
             key={value}
-            style={MultiselectStyles(isSelected).chip}
+            style={MultiselectStyles(isSelected, single).chip}
             onPress={onMultiselectItemPress(value)}>
             <Text style={MultiselectStyles(isSelected).text}>{label}</Text>
           </TouchableOpacity>

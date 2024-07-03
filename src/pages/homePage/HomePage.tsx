@@ -1,7 +1,7 @@
 import {observer} from 'mobx-react-lite';
 import React, {useEffect} from 'react';
 import {useTranslation} from 'react-i18next';
-import {View} from 'react-native';
+import {PermissionsAndroid, View} from 'react-native';
 import {
   BoldText,
   ExtraBoldText,
@@ -22,6 +22,17 @@ const HomePage = observer(
     const navigation = useNavigation();
 
     useEffect(() => {
+      (async () => {
+        const locationPermissionGranted = await PermissionsAndroid.check(
+          PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+        );
+        if (!locationPermissionGranted) {
+          await PermissionsAndroid.request(
+            PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+          );
+        }
+      })();
+
       userStore.me();
       kitchenStore.searchKitchensByProximity();
       kitchenStore.getFavouriteKitchens();

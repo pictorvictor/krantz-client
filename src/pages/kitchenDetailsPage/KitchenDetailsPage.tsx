@@ -36,6 +36,13 @@ const KitchenDetailsPage = observer(
       kitchenStore.getMeals(kitchen.id);
     }, [kitchen.id, kitchenStore]);
 
+    const onInfoButtonPress = () => {
+      // @ts-ignore
+      navigation.navigate(Route.KitchenInformation, {
+        kitchen,
+      });
+    };
+
     return (
       <View style={KitchenDetailsPageStyles.container}>
         <StatusBar backgroundColor="transparent" translucent />
@@ -45,7 +52,7 @@ const KitchenDetailsPage = observer(
           imageStyle={KitchenDetailsPageStyles.image}>
           <BackButton style={KitchenDetailsPageStyles.backButton} />
           <InfoButton
-            kitchen={kitchen}
+            onPress={onInfoButtonPress}
             style={KitchenDetailsPageStyles.infoButton}
           />
           <View style={KitchenDetailsPageStyles.overlay}>

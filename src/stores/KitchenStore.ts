@@ -108,7 +108,6 @@ export class KitchenStore {
   }
 
   @action async becomeOurPartner(kitchen: Partial<Kitchen>) {
-    console.log(kitchen);
     try {
       await axios.post('api/kitchen/become-our-partner', {...kitchen});
     } catch (error) {

@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 import theme from '../../utils/theme';
 
-export const MultiselectStyles = (isSelected?: boolean) =>
+export const MultiselectStyles = (isSelected?: boolean, single?: boolean) =>
   StyleSheet.create({
     container: {
       flexDirection: 'row',
@@ -10,7 +10,11 @@ export const MultiselectStyles = (isSelected?: boolean) =>
     },
     chip: {
       borderRadius: 15,
-      backgroundColor: isSelected ? theme.palette.primary : theme.palette.grey,
+      backgroundColor: isSelected
+        ? theme.palette.primary
+        : single
+        ? undefined
+        : theme.palette.grey,
       marginHorizontal: 5,
       marginBottom: 10,
       paddingHorizontal: 15,

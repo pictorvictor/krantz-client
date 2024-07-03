@@ -28,9 +28,10 @@
     "CARD_ONLINE": "Card online",
     "CASH_ON_SITE": "Cash on site",
     "CARD_ON_SITE": "Card on site",
-    "PLACED": "PLACED",
-    "CANCELLED": "CANCELLED",
-    "PICKED_UP": "PICKED UP",
+    "PLACED": "Placed",
+    "CANCELLED": "Cancelled",
+    "PICKED_UP": "Picked up",
+    "CONFIRMED": "Confirmed",
     "yourComment": "Your Comment",
     "saveReview": "Save Review",
     "statistics": "Statistics",
@@ -52,6 +53,8 @@
     "address": "Address",
     "regCom": "RegCom",
     "additionalInfo": "Additional info",
-    "workingHours": "Working hours"
+    "workingHours": "Working hours",
+    "orders": "Orders",
+    "orderNo": "Order No. "
   }
 }
