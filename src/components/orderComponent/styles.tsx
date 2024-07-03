@@ -2,10 +2,7 @@ import {StyleSheet} from 'react-native';
 import theme from '../../utils/theme';
 import {OrderStatus} from '../../types/order.types';
 
-export const OrderComponentStyles = (
-  orderStatus?: OrderStatus,
-  noPicture?: boolean,
-) =>
+export const OrderComponentStyles = (orderStatus?: OrderStatus) =>
   StyleSheet.create({
     container: {
       flexDirection: 'row',
@@ -19,7 +16,6 @@ export const OrderComponentStyles = (
       },
       shadowOpacity: 0.1,
       shadowRadius: 2,
-      ...(noPicture && {paddingHorizontal: 20}),
     },
     image: {
       width: 150,
@@ -29,7 +25,7 @@ export const OrderComponentStyles = (
     infoContainer: {
       marginTop: 20,
       flex: 1,
-      ...(!noPicture && {paddingHorizontal: 10}),
+      paddingHorizontal: 10,
     },
     kitchenName: {
       fontSize: 18,

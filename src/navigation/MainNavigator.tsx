@@ -4,11 +4,12 @@ import React from 'react';
 import {observer} from 'mobx-react-lite';
 import {BottomTabBar} from '../components';
 import {useStores} from '../hooks/useStores';
-import {KitchenManagementPage, SearchPage} from '../pages';
+import {SearchPage} from '../pages';
 import {Route} from '../utils/enums';
 import CartNavigator from './CartNavigator';
 import HomeNavigator from './HomeNavigator';
 import ProfileNavigator from './ProfileNavigator';
+import ProviderKitchenNavigator from './ProviderKitchenNavigator';
 
 const Tabs = createBottomTabNavigator<MainBottomTabBarParamList>();
 
@@ -17,7 +18,7 @@ export type MainBottomTabBarParamList = {
   [Route.Search]: {fromHome: boolean};
   [Route.Cart]: undefined;
   [Route.Profile]: undefined;
-  [Route.KitchenManagement]: undefined;
+  [Route.Restaurant]: undefined;
 };
 
 const MainNavigator = observer(() => {
@@ -37,8 +38,8 @@ const MainNavigator = observer(() => {
       <Tabs.Screen name={Route.Profile} component={ProfileNavigator} />
       {userStore.isProvider && (
         <Tabs.Screen
-          name={Route.KitchenManagement}
-          component={KitchenManagementPage}
+          name={Route.Restaurant}
+          component={ProviderKitchenNavigator}
         />
       )}
     </Tabs.Navigator>

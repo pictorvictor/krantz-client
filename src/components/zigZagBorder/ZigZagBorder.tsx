@@ -6,7 +6,13 @@ const ZigZagBorder = ({color = theme.palette.white}: {color?: string}) => {
   for (var i = 0; i < 40; i++) {
     const points = `${20 * i},0 ${20 * i + 10},10 ${20 * (i + 1)},0`;
     nodes.push(
-      <Polygon points={points} fill={color} stroke={color} strokeWidth="1" />,
+      <Polygon
+        points={points}
+        fill={color}
+        stroke={color}
+        strokeWidth="1"
+        key={i}
+      />,
     );
   }
   return nodes;

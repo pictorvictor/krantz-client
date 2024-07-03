@@ -7,30 +7,16 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import {Order, OrderStatus} from '../../types/order.types';
-import theme from '../../utils/theme';
-import {
-  BoldText,
-  IconButton,
-  LightText,
-  RegularText,
-  SemiBoldText,
-} from '../index';
+import {Order} from '../../types/order.types';
+import {BoldText, LightText, RegularText, SemiBoldText} from '../index';
 import {OrderComponentStyles} from './styles';
 
 interface OrderComponentProps {
   order: Order;
   onPress?: (order: Order) => void;
-  onArrowPress?: () => void;
-  noPicture?: boolean;
 }
 
-const OrderComponent: React.FC<OrderComponentProps> = ({
-  order,
-  onPress,
-  onArrowPress,
-  noPicture,
-}) => {
+const OrderComponent: React.FC<OrderComponentProps> = ({order, onPress}) => {
   const handlePress = (_event: GestureResponderEvent) => {
     if (onPress) {
       onPress(order);
@@ -39,14 +25,12 @@ const OrderComponent: React.FC<OrderComponentProps> = ({
 
   return (
     <TouchableOpacity onPress={handlePress} disabled={!onPress}>
-      <View style={OrderComponentStyles(undefined, noPicture).container}>
-        {!noPicture && (
-          <Image
-            source={{uri: order.kitchen.kitchenImage}}
-            style={OrderComponentStyles().image}
-          />
-        )}
-        <View style={OrderComponentStyles(undefined, noPicture).infoContainer}>
+      <View style={OrderComponentStyles(undefined).container}>
+        <Image
+          source={{uri: order.kitchen.kitchenImage}}
+          style={OrderComponentStyles().image}
+        />
+        <View style={OrderComponentStyles(undefined).infoContainer}>
           <BoldText
             style={OrderComponentStyles().kitchenName}
             numberOfLines={1}
@@ -76,29 +60,18 @@ const OrderComponent: React.FC<OrderComponentProps> = ({
                 {t('lei')}
               </LightText>
             </View>
-            {!noPicture && (
-              <View style={OrderComponentStyles().statusAndDateContainer}>
-                <RegularText style={OrderComponentStyles().date}>
-                  {moment(order.createdAt).format('D MMM [at] HH:mm')}
-                </RegularText>
-                <View
-                  style={OrderComponentStyles(order.status).statusContainer}>
-                  <SemiBoldText style={OrderComponentStyles().status}>
-                    {t(order.status)}
-                  </SemiBoldText>
-                </View>
+            <View style={OrderComponentStyles().statusAndDateContainer}>
+              <RegularText style={OrderComponentStyles().date}>
+                {moment(order.createdAt).format('D MMM [at] HH:mm')}
+              </RegularText>
+              <View style={OrderComponentStyles(order.status).statusContainer}>
+                <SemiBoldText style={OrderComponentStyles().status}>
+                  {t(order.status)}
+                </SemiBoldText>
               </View>
-            )}
+            </View>
           </View>
         </View>
-        {noPicture && order.status !== OrderStatus.PICKED_UP && (
-          <IconButton
-            backgroundColor={theme.palette.primary}
-            iconColor={theme.palette.white}
-            iconName="right"
-            onPress={onArrowPress as any}
-          />
-        )}
       </View>
     </TouchableOpacity>
   );

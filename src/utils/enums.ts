@@ -13,8 +13,11 @@ export enum Route {
   ProfilePage = 'ProfilePage',
   ProfileOptions = 'ProfileOptions',
   Statistics = 'Statistics',
-  KitchenManagement = 'Restaurant',
+  Restaurant = 'Restaurant',
+  ProviderOrders = 'ProviderOrders',
   BecomeOurPartner = 'BecomeOurPartner',
+  ProviderKitchen = 'ProviderKitchen',
+  ProviderAddMeal = 'ProviderÁddMeal',
 }
 
 export enum PaymentMethod {

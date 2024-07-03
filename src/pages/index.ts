@@ -10,4 +10,6 @@ export {default as MealDetailsPage} from './mealDetailsPage/MealDetailsPage';
 export {default as OrderDetailsPage} from './orderDetailsPage/OrderDetailsPage';
 export {default as ProfileOptionsPage} from './profileOptionsPage/ProfileOptionsPage';
 export {default as StatisticsPage} from './statisticsPage/StatisticsPage';
-export {default as KitchenManagementPage} from './kitchenManagementPage/KitchenManagementPage';
+export {default as ProviderOrdersPage} from './providerOrdersPage/ProviderOrdersPage';
+export {default as ProviderKitchenPage} from './providerKitchenPage/ProviderKitchenPage';
+export {default as ProviderAddMealPage} from './providerAddMealPage/ProviderAddMealPage';
