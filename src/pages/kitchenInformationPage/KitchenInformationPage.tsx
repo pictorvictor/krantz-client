@@ -1,10 +1,11 @@
 import {StackScreenProps} from '@react-navigation/stack';
+import {useTranslation} from 'react-i18next';
+import {StatusBar, View} from 'react-native';
+import {BackButton, ExtraBoldText, LightText, Text} from '../../components';
 import {HomeStackParamList} from '../../navigation/HomeNavigator';
 import {Route} from '../../utils/enums';
-import {View} from 'react-native';
+import theme from '../../utils/theme';
 import {KitchenInformationPageStyles} from './styles';
-import {BackButton, ExtraBoldText, LightText, Text} from '../../components';
-import {useTranslation} from 'react-i18next';
 
 const KitchenInformationPage = ({
   route,
@@ -14,6 +15,10 @@ const KitchenInformationPage = ({
 
   return (
     <View style={KitchenInformationPageStyles.container}>
+      <StatusBar
+        barStyle="dark-content"
+        backgroundColor={theme.palette.backgroundGrey}
+      />
       <BackButton style={KitchenInformationPageStyles.backButton} />
       <ExtraBoldText style={KitchenInformationPageStyles.title}>
         {kitchen.name}

@@ -4,10 +4,11 @@ import theme from '../../utils/theme';
 export const BecomeOurPartnerPageStyles = StyleSheet.create({
   container: {
     padding: 20,
+    paddingTop: 50,
   },
   title: {
     fontSize: 30,
-    marginTop: 30,
+    marginTop: 20,
     marginBottom: 20,
     textAlign: 'center',
   },

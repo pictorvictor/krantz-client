@@ -19,13 +19,13 @@ export const KitchenDetailsPageStyles = StyleSheet.create({
   },
   backButton: {
     position: 'absolute',
-    top: 10,
+    top: 40,
     left: 10,
     zIndex: 2,
   },
   infoButton: {
     position: 'absolute',
-    top: 10,
+    top: 40,
     right: 10,
     zIndex: 2,
   },

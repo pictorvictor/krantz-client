@@ -1,10 +1,11 @@
 import {observer} from 'mobx-react-lite';
 import React, {useEffect, useState} from 'react';
 import {useTranslation} from 'react-i18next';
-import {ScrollView, View} from 'react-native';
+import {ScrollView, StatusBar, View} from 'react-native';
 import {ExtraBoldText, Multiselect} from '../../components';
 import {useStores} from '../../hooks/useStores';
 import {Order, OrderStatus} from '../../types/order.types';
+import theme from '../../utils/theme';
 import OrderItem from './OrderItem';
 import {KitchenManagementPageStyles} from './styles';
 
@@ -40,7 +41,10 @@ const KitchenManagementPage = observer(() => {
 
   return (
     <View style={KitchenManagementPageStyles.container}>
-      {/* <StatusBar backgroundColor="transparent" translucent /> */}
+      <StatusBar
+        barStyle="dark-content"
+        backgroundColor={theme.palette.backgroundGrey}
+      />
       {/* <ImageBackground
         source={{uri: kitchenStore.providerKitchen?.kitchenImage}}
         style={KitchenManagementPageStyles.imageBackground}

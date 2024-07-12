@@ -6,6 +6,7 @@ export const ProfilePageStyles = StyleSheet.create({
     height: '100%',
     paddingHorizontal: 20,
     backgroundColor: theme.palette.backgroundGrey,
+    paddingTop: 50,
   },
   profileContainer: {
     flexDirection: 'row',

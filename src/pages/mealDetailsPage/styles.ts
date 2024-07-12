@@ -19,7 +19,7 @@ export const MealDetailsPageStyles = StyleSheet.create({
   },
   backButton: {
     position: 'absolute',
-    top: 10,
+    top: 40,
     left: 10,
     zIndex: 2,
   },

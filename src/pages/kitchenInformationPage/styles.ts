@@ -6,13 +6,13 @@ export const KitchenInformationPageStyles = StyleSheet.create({
     backgroundColor: theme.palette.backgroundGrey,
     paddingHorizontal: 20,
     height: '100%',
+    paddingTop: 40,
   },
   backButton: {
     position: 'absolute',
-    top: 10,
+    top: 50,
     left: 10,
     zIndex: 2,
-    backgroundColor: theme.palette.backgroundGrey,
   },
   title: {
     alignSelf: 'center',

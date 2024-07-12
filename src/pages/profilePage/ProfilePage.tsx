@@ -1,5 +1,5 @@
 import {useStores} from '../../hooks/useStores';
-import {ScrollView, TouchableOpacity, View} from 'react-native';
+import {ScrollView, StatusBar, TouchableOpacity, View} from 'react-native';
 import {ProfilePageStyles} from './styles';
 import {useTranslation} from 'react-i18next';
 import {IconOutline} from '@ant-design/icons-react-native';
@@ -33,6 +33,10 @@ const ProfilePage = observer(() => {
 
   return (
     <View style={ProfilePageStyles.container}>
+      <StatusBar
+        barStyle="dark-content"
+        backgroundColor={theme.palette.backgroundGrey}
+      />
       <View style={ProfilePageStyles.profileContainer}>
         <View style={ProfilePageStyles.userInfo}>
           <ExtraBoldText style={ProfilePageStyles.userName}>

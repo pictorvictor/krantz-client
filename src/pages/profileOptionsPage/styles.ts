@@ -5,11 +5,12 @@ export const ProfileOptionsPageStyles = StyleSheet.create({
   container: {
     height: '100%',
     paddingHorizontal: 20,
+    paddingTop: 10,
     backgroundColor: theme.palette.backgroundGrey,
   },
   backButton: {
     position: 'absolute',
-    top: 10,
+    top: 50,
     left: 10,
     zIndex: 2,
   },

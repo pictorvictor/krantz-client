@@ -1,8 +1,8 @@
 import {t} from 'i18next';
 import {isEmpty} from 'lodash';
 import {observer} from 'mobx-react-lite';
-import {useEffect, useState} from 'react';
-import {ScrollView} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {ScrollView, StatusBar} from 'react-native';
 import {
   BackButton,
   BoldText,
@@ -15,6 +15,7 @@ import {
 import {useStores} from '../../hooks/useStores';
 import {Kitchen, KitchenType} from '../../types/kitchen.types';
 import {BecomeOurPartnerPageStyles} from './styles';
+import theme from '../../utils/theme';
 
 const BecomeOurPartnerPage = observer(() => {
   const {kitchenStore} = useStores();
@@ -61,6 +62,10 @@ const BecomeOurPartnerPage = observer(() => {
 
   return (
     <ScrollView contentContainerStyle={BecomeOurPartnerPageStyles.container}>
+      <StatusBar
+        barStyle="dark-content"
+        backgroundColor={theme.palette.backgroundGrey}
+      />
       <BackButton />
       <BoldText style={BecomeOurPartnerPageStyles.title}>
         {t('becomeOurPartner')}

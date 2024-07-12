@@ -7,7 +7,7 @@ import {
   Button,
   Input,
 } from '../../components';
-import {ScrollView, View} from 'react-native';
+import {ScrollView, StatusBar, View} from 'react-native';
 import {CartPageStyles} from './styles';
 import {useStores} from '../../hooks/useStores';
 import {observer} from 'mobx-react-lite';
@@ -15,8 +15,9 @@ import {t} from 'i18next';
 import {CartItem} from '../../types/cart.types';
 import {enumToArray} from '../../utils/helpers';
 import {PaymentMethod, Route} from '../../utils/enums';
-import {useState} from 'react';
+import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
+import theme from '../../utils/theme';
 
 const CartPage = observer(() => {
   const {cartStore} = useStores();
@@ -62,6 +63,10 @@ const CartPage = observer(() => {
 
   return (
     <View style={CartPageStyles.container}>
+      <StatusBar
+        barStyle="dark-content"
+        backgroundColor={theme.palette.backgroundGrey}
+      />
       <BoldText style={CartPageStyles.kitchenName}>
         {cartStore.cart?.kitchen.name as string}
       </BoldText>

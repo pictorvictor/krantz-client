@@ -2,7 +2,7 @@ import {isEmpty} from 'lodash';
 import {observer} from 'mobx-react-lite';
 import React, {useEffect} from 'react';
 import {useTranslation} from 'react-i18next';
-import {Dimensions, View} from 'react-native';
+import {Dimensions, StatusBar, View} from 'react-native';
 import {BarChart} from 'react-native-chart-kit';
 import {BackButton, BoldText, Text} from '../../components';
 import {useStores} from '../../hooks/useStores';
@@ -19,6 +19,10 @@ const StatisticsPage = observer(() => {
 
   return (
     <View style={StatisticsPageStyles.container}>
+      <StatusBar
+        barStyle="dark-content"
+        backgroundColor={theme.palette.backgroundGrey}
+      />
       <BackButton />
       <BoldText style={StatisticsPageStyles.title}>
         {t('co2SavingsTitle')}

@@ -1,10 +1,11 @@
 import {StackScreenProps} from '@react-navigation/stack';
-import {View} from 'react-native';
-import {AuthStackParamList} from '../../navigation/AuthNavigator';
-import {BoldText, Input, Logo, Button, SemiBoldText} from '../../components';
 import {t} from 'i18next';
 import React, {useState} from 'react';
+import {StatusBar, View} from 'react-native';
+import {BoldText, Button, Input, Logo, SemiBoldText} from '../../components';
 import {useStores} from '../../hooks/useStores';
+import {AuthStackParamList} from '../../navigation/AuthNavigator';
+import theme from '../../utils/theme';
 import {RegisterPageStyles} from './styles';
 
 const RegisterPage = ({
@@ -35,6 +36,10 @@ const RegisterPage = ({
 
   return (
     <View style={RegisterPageStyles.registerContainer}>
+      <StatusBar
+        barStyle="dark-content"
+        backgroundColor={theme.palette.backgroundGrey}
+      />
       <View style={RegisterPageStyles.logoContainer}>
         <Logo />
       </View>

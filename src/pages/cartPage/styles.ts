@@ -7,7 +7,7 @@ export const CartPageStyles = StyleSheet.create({
     backgroundColor: theme.palette.backgroundGrey,
     alignItems: 'center',
     paddingHorizontal: 20,
-    paddingTop: 10,
+    paddingTop: 50,
   },
   kitchenName: {
     fontSize: 31,

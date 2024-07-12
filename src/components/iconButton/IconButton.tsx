@@ -43,7 +43,7 @@ export const InfoButton = ({
   onPress?: () => void;
 }) => <IconButton iconName="info-circle" onPress={onPress} style={style} />;
 
-export const BackButton = ({style}: {style: ViewStyle}) => {
+export const BackButton = ({style}: {style?: ViewStyle}) => {
   const navigation = useNavigation();
 
   const onBackIconButtonPress = () => {

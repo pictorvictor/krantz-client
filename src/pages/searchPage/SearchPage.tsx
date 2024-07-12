@@ -1,17 +1,18 @@
+import {BottomTabScreenProps} from '@react-navigation/bottom-tabs';
+import {useNavigation} from '@react-navigation/native';
 import {debounce} from 'lodash';
 import {observer} from 'mobx-react-lite';
 import React, {useEffect, useMemo, useRef, useState} from 'react';
-import {View} from 'react-native';
-import {BottomTabScreenProps} from '@react-navigation/bottom-tabs';
 import {useTranslation} from 'react-i18next';
+import {StatusBar, View} from 'react-native';
 import {FlatList, GestureHandlerRootView} from 'react-native-gesture-handler';
 import {Input, KitchenComponent, Multiselect} from '../../components';
 import {useStores} from '../../hooks/useStores';
 import {MainBottomTabBarParamList} from '../../navigation/MainNavigator';
-import {Route} from '../../utils/enums';
-import {SearchPageStyles} from './styles';
 import {Kitchen} from '../../types/kitchen.types';
-import {useNavigation} from '@react-navigation/native';
+import {Route} from '../../utils/enums';
+import theme from '../../utils/theme';
+import {SearchPageStyles} from './styles';
 
 const SearchPage = observer(
   ({route}: BottomTabScreenProps<MainBottomTabBarParamList, Route.Search>) => {
@@ -68,6 +69,10 @@ const SearchPage = observer(
 
     return (
       <View style={SearchPageStyles.container}>
+        <StatusBar
+          barStyle="dark-content"
+          backgroundColor={theme.palette.backgroundGrey}
+        />
         <Input
           placeholder={t('search')}
           value={searchQuery}

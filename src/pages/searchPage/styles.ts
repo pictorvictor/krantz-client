@@ -4,7 +4,7 @@ import theme from '../../utils/theme';
 export const SearchPageStyles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 20,
+    paddingTop: 60,
     paddingHorizontal: 20,
     backgroundColor: theme.palette.backgroundGrey,
   },

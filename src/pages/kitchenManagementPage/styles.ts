@@ -5,7 +5,7 @@ const {height} = Dimensions.get('window');
 
 export const KitchenManagementPageStyles = StyleSheet.create({
   container: {
-    paddingVertical: 20,
+    paddingTop: 50,
     paddingHorizontal: 30,
   },
   tabItemText: {

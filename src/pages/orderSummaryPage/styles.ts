@@ -6,6 +6,7 @@ export const OrderSummaryPageStyles = StyleSheet.create({
     flex: 1,
     backgroundColor: theme.palette.backgroundGrey,
     paddingHorizontal: 30,
+    paddingTop: 30,
   },
   scrollView: {
     height: '100%',
@@ -81,7 +82,7 @@ export const OrderSummaryPageStyles = StyleSheet.create({
   },
   backButton: {
     position: 'absolute',
-    top: 10,
+    top: 50,
     left: 10,
     zIndex: 2,
   },

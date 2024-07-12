@@ -7,6 +7,7 @@ export const RegisterPageStyles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 40,
+    paddingTop: 90,
     backgroundColor: theme.palette.backgroundGrey,
   },
   inputsContainer: {flexGrow: 1, alignSelf: 'stretch'},

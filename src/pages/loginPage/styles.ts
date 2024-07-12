@@ -7,6 +7,7 @@ export const LoginPageStyles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 40,
+    paddingTop: 90,
     backgroundColor: theme.palette.backgroundGrey,
   },
   logoContainer: {flexGrow: 0.5, justifyContent: 'flex-end'},

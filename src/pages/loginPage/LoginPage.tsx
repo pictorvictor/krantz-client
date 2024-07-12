@@ -1,11 +1,12 @@
 import {StackScreenProps} from '@react-navigation/stack';
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
-import {View} from 'react-native';
+import {StatusBar, View} from 'react-native';
 
 import {BoldText, Button, Input, Logo, SemiBoldText} from '../../components';
 import {useStores} from '../../hooks/useStores';
 import {AuthStackParamList} from '../../navigation/AuthNavigator';
+import theme from '../../utils/theme';
 import {LoginPageStyles} from './styles';
 
 const LoginPage = ({
@@ -34,6 +35,10 @@ const LoginPage = ({
 
   return (
     <View style={LoginPageStyles.loginContainer}>
+      <StatusBar
+        barStyle="dark-content"
+        backgroundColor={theme.palette.backgroundGrey}
+      />
       <View style={LoginPageStyles.logoContainer}>
         <Logo />
       </View>
@@ -50,9 +55,9 @@ const LoginPage = ({
           placeholder={t('Password')}
           onChangeText={onCredentialsChange('password')}
         />
-        <SemiBoldText style={LoginPageStyles.forgotYourPassword}>
+        {/* <SemiBoldText style={LoginPageStyles.forgotYourPassword}>
           {t('forgotYourPassword')}
-        </SemiBoldText>
+        </SemiBoldText> */}
       </View>
       <View style={LoginPageStyles.loginButtonContainer}>
         <Button onPress={onLoginPress} style={LoginPageStyles.loginButton}>

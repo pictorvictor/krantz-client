@@ -1,7 +1,7 @@
 import {t} from 'i18next';
 import {observer} from 'mobx-react-lite';
 import React from 'react';
-import {ScrollView, View} from 'react-native';
+import {ScrollView, StatusBar, View} from 'react-native';
 import Svg from 'react-native-svg';
 import {
   BackButton,
@@ -12,6 +12,7 @@ import {
 } from '../../components';
 import {useStores} from '../../hooks/useStores';
 import {OrderSummaryPageStyles} from './styles';
+import theme from '../../utils/theme';
 
 const OrderSummaryPage = observer(() => {
   const {cartStore} = useStores();
@@ -23,6 +24,10 @@ const OrderSummaryPage = observer(() => {
 
   return (
     <View style={OrderSummaryPageStyles.container}>
+      <StatusBar
+        barStyle="dark-content"
+        backgroundColor={theme.palette.backgroundGrey}
+      />
       <BackButton style={OrderSummaryPageStyles.backButton} />
       <ScrollView style={OrderSummaryPageStyles.scrollView}>
         <View style={OrderSummaryPageStyles.orderSummaryContainer}>

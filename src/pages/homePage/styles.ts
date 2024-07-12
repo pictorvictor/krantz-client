@@ -3,8 +3,8 @@ import theme from '../../utils/theme';
 
 export const HomePageStyles = StyleSheet.create({
   container: {
+    paddingTop: 50,
     paddingHorizontal: 20,
-    height: '100%',
     backgroundColor: theme.palette.backgroundGrey,
   },
   welcomeLabel: {

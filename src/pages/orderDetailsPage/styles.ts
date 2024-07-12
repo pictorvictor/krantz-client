@@ -21,7 +21,7 @@ export const OrderDetailsPageStyles = (orderStatus?: OrderStatus) =>
     },
     backButton: {
       position: 'absolute',
-      top: 10,
+      top: 40,
       left: 10,
       zIndex: 2,
     },

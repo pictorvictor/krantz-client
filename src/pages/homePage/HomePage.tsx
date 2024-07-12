@@ -1,7 +1,9 @@
+import {useNavigation} from '@react-navigation/native';
+import {StackScreenProps} from '@react-navigation/stack';
 import {observer} from 'mobx-react-lite';
 import React, {useEffect} from 'react';
 import {useTranslation} from 'react-i18next';
-import {PermissionsAndroid, View} from 'react-native';
+import {PermissionsAndroid, StatusBar, View} from 'react-native';
 import {
   BoldText,
   ExtraBoldText,
@@ -9,11 +11,10 @@ import {
   KitchenListComponent,
 } from '../../components';
 import {useStores} from '../../hooks/useStores';
+import {HomeStackParamList} from '../../navigation/HomeNavigator';
 import {Route} from '../../utils/enums';
 import {HomePageStyles} from './styles';
-import {StackScreenProps} from '@react-navigation/stack';
-import {HomeStackParamList} from '../../navigation/HomeNavigator';
-import {useNavigation} from '@react-navigation/native';
+import theme from '../../utils/theme';
 
 const HomePage = observer(
   (_route: StackScreenProps<HomeStackParamList, Route.HomePage>) => {
@@ -45,6 +46,10 @@ const HomePage = observer(
 
     return (
       <View style={HomePageStyles.container}>
+        <StatusBar
+          barStyle="dark-content"
+          backgroundColor={theme.palette.backgroundGrey}
+        />
         <BoldText style={HomePageStyles.welcomeLabel}>{t('welcome')}</BoldText>
         <ExtraBoldText style={HomePageStyles.firstName}>
           {userStore.firstName}

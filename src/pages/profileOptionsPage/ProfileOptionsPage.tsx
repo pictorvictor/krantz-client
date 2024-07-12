@@ -3,7 +3,7 @@ import {useNavigation} from '@react-navigation/native';
 import {observer} from 'mobx-react-lite';
 import React from 'react';
 import {useTranslation} from 'react-i18next';
-import {TouchableOpacity, View} from 'react-native';
+import {StatusBar, TouchableOpacity, View} from 'react-native';
 import {
   BackButton,
   BoldText,
@@ -12,8 +12,9 @@ import {
   Text,
 } from '../../components';
 import {useStores} from '../../hooks/useStores';
-import {ProfileOptionsPageStyles} from './styles';
 import {Route} from '../../utils/enums';
+import theme from '../../utils/theme';
+import {ProfileOptionsPageStyles} from './styles';
 
 const ProfileOptionsPage = observer(() => {
   const {authStore} = useStores();
@@ -34,6 +35,10 @@ const ProfileOptionsPage = observer(() => {
 
   return (
     <View style={ProfileOptionsPageStyles.container}>
+      <StatusBar
+        barStyle="dark-content"
+        backgroundColor={theme.palette.backgroundGrey}
+      />
       <BackButton style={ProfileOptionsPageStyles.backButton} />
       <View style={ProfileOptionsPageStyles.contentContainer}>
         <View style={ProfileOptionsPageStyles.section}>
