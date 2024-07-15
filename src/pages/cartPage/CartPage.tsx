@@ -7,7 +7,13 @@ import {
   Button,
   Input,
 } from '../../components';
-import {ScrollView, StatusBar, View} from 'react-native';
+import {
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  StatusBar,
+  View,
+} from 'react-native';
 import {CartPageStyles} from './styles';
 import {useStores} from '../../hooks/useStores';
 import {observer} from 'mobx-react-lite';
@@ -62,7 +68,9 @@ const CartPage = observer(() => {
   };
 
   return (
-    <View style={CartPageStyles.container}>
+    <KeyboardAvoidingView
+      {...(Platform.OS === 'ios' && {behavior: 'padding'})}
+      style={CartPageStyles.container}>
       <StatusBar
         barStyle="dark-content"
         backgroundColor={theme.palette.backgroundGrey}
@@ -123,7 +131,7 @@ const CartPage = observer(() => {
           </Button>
         )}
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 });
 

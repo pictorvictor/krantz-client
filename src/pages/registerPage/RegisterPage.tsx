@@ -1,7 +1,7 @@
 import {StackScreenProps} from '@react-navigation/stack';
 import {t} from 'i18next';
 import React, {useState} from 'react';
-import {StatusBar, View} from 'react-native';
+import {KeyboardAvoidingView, Platform, StatusBar, View} from 'react-native';
 import {BoldText, Button, Input, Logo, SemiBoldText} from '../../components';
 import {useStores} from '../../hooks/useStores';
 import {AuthStackParamList} from '../../navigation/AuthNavigator';
@@ -35,7 +35,9 @@ const RegisterPage = ({
   };
 
   return (
-    <View style={RegisterPageStyles.registerContainer}>
+    <KeyboardAvoidingView
+      {...(Platform.OS === 'ios' && {behavior: 'padding'})}
+      style={RegisterPageStyles.registerContainer}>
       <StatusBar
         barStyle="dark-content"
         backgroundColor={theme.palette.backgroundGrey}
@@ -94,7 +96,7 @@ const RegisterPage = ({
           </BoldText>
         </View>
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 
