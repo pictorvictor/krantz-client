@@ -58,6 +58,7 @@ const HomePage = observer(
           placeholder={t('search')}
           onPress={onSearchInputPress}
           style={HomePageStyles.searchInput}
+          showSoftInputOnFocus={false}
         />
         <View style={HomePageStyles.contentContainer}>
           <KitchenListComponent

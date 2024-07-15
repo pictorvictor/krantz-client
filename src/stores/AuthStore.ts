@@ -2,6 +2,7 @@ import {action, makeAutoObservable, observable} from 'mobx';
 import Keychain from 'react-native-keychain';
 
 import axios from '../utils/axios';
+import {Toast} from '@ant-design/react-native';
 
 export class AuthStore {
   @observable isAuth: boolean = false;
@@ -30,7 +31,8 @@ export class AuthStore {
         this.setIsAuth(true);
       }
     } catch (e: any) {
-      console.error(e);
+      Toast.fail(e.response?.data?.message);
+      console.error(e.response?.data?.message);
     }
   }
 
@@ -66,7 +68,8 @@ export class AuthStore {
         this.setIsAuth(true);
       }
     } catch (e: any) {
-      console.error(e);
+      Toast.fail(e.response?.data?.message);
+      console.error(e.response?.data?.message);
     }
   }
 }

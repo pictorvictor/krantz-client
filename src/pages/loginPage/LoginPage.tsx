@@ -9,6 +9,7 @@ import {useStores} from '../../hooks/useStores';
 import {AuthStackParamList} from '../../navigation/AuthNavigator';
 import theme from '../../utils/theme';
 import {LoginPageStyles} from './styles';
+import {Toast} from '@ant-design/react-native';
 
 const LoginPage = ({
   navigation,
@@ -27,7 +28,11 @@ const LoginPage = ({
     }));
 
   const onLoginPress = async () => {
-    await authStore.authenticate(credentials);
+    if (!credentials.email || !credentials.password) {
+      Toast.fail('All fields are required');
+    } else {
+      await authStore.authenticate(credentials);
+    }
   };
 
   const onRegisterPress = () => {

@@ -16,6 +16,7 @@ const Input = React.forwardRef(
       numberOfLines,
       scrollEnabled,
       type,
+      showSoftInputOnFocus,
     }: {
       value?: string;
       onChangeText?: (text: string) => void;
@@ -26,6 +27,7 @@ const Input = React.forwardRef(
       numberOfLines?: number;
       scrollEnabled?: boolean;
       type?: string;
+      showSoftInputOnFocus?: boolean;
     },
     ref: LegacyRef<TextInput>,
   ) => (
@@ -42,6 +44,7 @@ const Input = React.forwardRef(
       scrollEnabled={scrollEnabled}
       ref={ref}
       {...(type === 'password' && {secureTextEntry: true})}
+      showSoftInputOnFocus={showSoftInputOnFocus}
     />
   ),
 );
