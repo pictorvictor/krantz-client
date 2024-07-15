@@ -47,11 +47,11 @@ const ProfilePage = observer(() => {
           </SemiBoldText>
         </View>
         <View style={ProfilePageStyles.iconsContainer}>
-          <IconOutline
+          {/* <IconOutline
             name="edit"
             size={30}
             color={theme.palette.textSecondary}
-          />
+          /> */}
           <TouchableOpacity onPress={onOptionsPress}>
             <IconOutline
               name="setting"

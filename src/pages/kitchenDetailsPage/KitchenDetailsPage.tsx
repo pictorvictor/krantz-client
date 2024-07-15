@@ -45,7 +45,11 @@ const KitchenDetailsPage = observer(
 
     return (
       <View style={KitchenDetailsPageStyles.container}>
-        <StatusBar backgroundColor="transparent" translucent />
+        <StatusBar
+          backgroundColor="transparent"
+          translucent
+          barStyle={'dark-content'}
+        />
         <ImageBackground
           source={{uri: kitchen?.kitchenImage}}
           style={KitchenDetailsPageStyles.imageBackground}

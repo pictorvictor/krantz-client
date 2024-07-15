@@ -26,13 +26,16 @@ const KitchenManagementPage = observer(() => {
   }, [orderStore, kitchenStore]);
 
   const updateOrderStatus = (order: Order) => () => {
-    orderStore.updateOrderStatus(
-      order.orderId,
-      order.status === OrderStatus.PLACED
-        ? OrderStatus.CONFIRMED
-        : OrderStatus.PICKED_UP,
-    );
-    orderStore.getKitchenOrders();
+    orderStore
+      .updateOrderStatus(
+        order.orderId,
+        order.status === OrderStatus.PLACED
+          ? OrderStatus.CONFIRMED
+          : OrderStatus.PICKED_UP,
+      )
+      .then(() => {
+        orderStore.getKitchenOrders();
+      });
   };
 
   const onTabChange = (value: string) => {

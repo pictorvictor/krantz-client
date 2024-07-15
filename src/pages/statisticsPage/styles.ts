@@ -8,12 +8,12 @@ export const StatisticsPageStyles = StyleSheet.create({
   },
   title: {
     color: theme.palette.primary,
-    fontSize: 30,
-    marginBottom: 30,
+    fontSize: 28,
+    marginBottom: 20,
     marginTop: 20,
   },
   description: {
-    marginBottom: 50,
+    marginBottom: 30,
   },
   barChartContainer: {
     borderRadius: 10,

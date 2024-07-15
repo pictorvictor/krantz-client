@@ -17,6 +17,20 @@ const StatisticsPage = observer(() => {
     userStore.getStatistics();
   }, [userStore]);
 
+  const formatData = (data: any) => {
+    return data.map((value: number) => {
+      if (value >= 1000) {
+        return (value / 1000).toFixed(2);
+      }
+      return value.toFixed(2);
+    });
+  };
+
+  const getYAxisLabel = () => {
+    const maxValue = Math.max(...(userStore.statistics?.data || []));
+    return maxValue >= 1000 ? t('tonnes') : t('kg');
+  };
+
   return (
     <View style={StatisticsPageStyles.container}>
       <StatusBar
@@ -34,12 +48,12 @@ const StatisticsPage = observer(() => {
         <BarChart
           data={{
             labels: userStore.statistics?.labels,
-            datasets: [{data: userStore.statistics?.data}],
+            datasets: [{data: formatData(userStore.statistics?.data)}],
           }}
           width={Dimensions.get('window').width - 40}
           height={400}
           showValuesOnTopOfBars
-          yAxisSuffix=""
+          yAxisSuffix={getYAxisLabel()}
           yAxisLabel=""
           yAxisInterval={1} // optional, defaults to 1
           chartConfig={{

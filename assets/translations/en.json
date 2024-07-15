@@ -36,7 +36,7 @@
     "saveReview": "Save Review",
     "statistics": "Statistics",
     "co2SavingsTitle": "CO2 Savings by month",
-    "co2SavingsDescription": "This bar chart shows the distribution of CO2 savings by month",
+    "co2SavingsDescription": "This chart shows the amount of CO2 emissions you prevented monthly from entering the atmosphere by making sustainable purchasing choices. Keep up the good work!",
     "becomeOurPartner": "Become our partner",
     "doYouHaveLeftoverFood": "Do you have leftover food in your restaurant and don’t have what to do with it? Join us now!",
     "yourPersonalData": "Your personal data will get overwritten with the information you provided",
@@ -55,6 +55,8 @@
     "additionalInfo": "Additional info",
     "workingHours": "Working hours",
     "orders": "Orders",
-    "orderNo": "Order No. "
+    "orderNo": "Order No. ",
+    "kg": "kg",
+    "tonnes": "tonnes"
   }
 }

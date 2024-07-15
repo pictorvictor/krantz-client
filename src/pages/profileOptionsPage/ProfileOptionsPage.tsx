@@ -59,7 +59,9 @@ const ProfileOptionsPage = observer(() => {
             {'0000 0000 0000 0000'}
           </SemiBoldText>
           <View style={ProfileOptionsPageStyles.cardHolderAndExpiryContainer}>
-            <Text style={ProfileOptionsPageStyles.cardInfo}>{'John Doe'}</Text>
+            <Text style={ProfileOptionsPageStyles.cardInfo}>
+              {'Victor Profir'}
+            </Text>
             <Text style={ProfileOptionsPageStyles.cardInfo}>{'09/28'}</Text>
           </View>
         </View>

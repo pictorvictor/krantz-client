@@ -32,6 +32,7 @@ const OrderItem = ({
         </View>
         {order.items?.map(item => (
           <SemiBoldText
+            key={item?.meal?.id}
             numberOfLines={
               1
             }>{`${item?.quantity} x ${item?.meal?.name}`}</SemiBoldText>
