@@ -21,7 +21,7 @@ const Input = React.forwardRef(
       onChangeText?: (text: string) => void;
       style?: {[x: string]: string | number};
       placeholder?: string;
-      onPress?: () => void;
+      onPress?: (event?: any) => void;
       multiline?: boolean;
       numberOfLines?: number;
       scrollEnabled?: boolean;

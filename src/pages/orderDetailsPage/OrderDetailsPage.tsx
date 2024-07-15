@@ -15,12 +15,12 @@ import {
   Text,
 } from '../../components';
 import {useStores} from '../../hooks/useStores';
-import {HomeStackParamList} from '../../navigation/HomeNavigator';
 import {Route} from '../../utils/enums';
 import {OrderDetailsPageStyles} from './styles';
+import {ProfileStackParamList} from '../../navigation/ProfileNavigator';
 
 const OrderDetailsPage = observer(
-  ({route}: StackScreenProps<HomeStackParamList, Route.OrderDetails>) => {
+  ({route}: StackScreenProps<ProfileStackParamList, Route.OrderDetails>) => {
     const {cartStore, orderStore} = useStores();
     const {t} = useTranslation();
     const {order} = route.params;
@@ -41,7 +41,12 @@ const OrderDetailsPage = observer(
       navigation.navigate(Route.Cart);
     };
 
-    const onSaveReview = () => orderStore.reviewOrder(order.orderId, rating);
+    const onSaveReview = () => {
+      orderStore
+        .reviewOrder(order.orderId, rating)
+        .then(() => orderStore.getMyOrders());
+      navigation.goBack();
+    };
 
     return (
       <View style={OrderDetailsPageStyles().container}>

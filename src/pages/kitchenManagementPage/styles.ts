@@ -41,7 +41,7 @@ export const KitchenManagementPageStyles = StyleSheet.create({
   },
   orders: {
     paddingTop: 20,
-    paddingHorizontal: 50,
+    paddingHorizontal: 30,
   },
   ordersTitle: {
     fontSize: 50,

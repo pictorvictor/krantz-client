@@ -42,7 +42,7 @@ export const ProfilePageStyles = StyleSheet.create({
   },
   iconsContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-end',
     width: 80,
     marginBottom: 20,
   },

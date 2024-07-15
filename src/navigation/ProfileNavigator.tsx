@@ -1,9 +1,15 @@
 import React from 'react';
 
 import {createStackNavigator} from '@react-navigation/stack';
-import {ProfileOptionsPage, ProfilePage, StatisticsPage} from '../pages';
+import {
+  OrderDetailsPage,
+  ProfileOptionsPage,
+  ProfilePage,
+  StatisticsPage,
+} from '../pages';
 import {Route} from '../utils/enums';
 import BecomeOurPartnerPage from '../pages/becomeOurPartnerPage/BecomeOurPartnerPage';
+import {Order} from '../types/order.types';
 
 const Stack = createStackNavigator<ProfileStackParamList>();
 
@@ -12,6 +18,7 @@ export type ProfileStackParamList = {
   [Route.ProfileOptions]: undefined;
   [Route.Statistics]: undefined;
   [Route.BecomeOurPartner]: undefined;
+  [Route.OrderDetails]: {order: Order};
 };
 
 const ProfileNavigator = () => {
@@ -30,6 +37,7 @@ const ProfileNavigator = () => {
         name={Route.BecomeOurPartner}
         component={BecomeOurPartnerPage}
       />
+      <Stack.Screen name={Route.OrderDetails} component={OrderDetailsPage} />
     </Stack.Navigator>
   );
 };

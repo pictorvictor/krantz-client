@@ -6,6 +6,7 @@ export const HomePageStyles = StyleSheet.create({
     paddingTop: 50,
     paddingHorizontal: 20,
     backgroundColor: theme.palette.backgroundGrey,
+    flex: 1,
   },
   welcomeLabel: {
     fontSize: 30,

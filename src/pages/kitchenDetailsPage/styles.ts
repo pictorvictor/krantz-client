@@ -11,7 +11,7 @@ export const KitchenDetailsPageStyles = StyleSheet.create({
   imageBackground: {
     top: 0,
     width: '100%',
-    height: height / 3.32 - 100,
+    height: height / 3.32,
     justifyContent: 'flex-end',
   },
   image: {

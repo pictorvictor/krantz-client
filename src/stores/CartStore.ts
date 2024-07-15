@@ -95,6 +95,7 @@ export class CartStore {
       runInAction(() => {
         this.orderSummary = data;
         this.orderStore.getMyOrders();
+        this.orderStore.getKitchenOrders();
       });
     } catch (err: any) {
       console.error('Error placing order:', err);
