@@ -1,7 +1,7 @@
 import {StackScreenProps} from '@react-navigation/stack';
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
-import {StatusBar, View} from 'react-native';
+import {KeyboardAvoidingView, Platform, StatusBar, View} from 'react-native';
 
 import {BoldText, Button, Input, Logo, SemiBoldText} from '../../components';
 import {useStores} from '../../hooks/useStores';
@@ -34,7 +34,9 @@ const LoginPage = ({
   };
 
   return (
-    <View style={LoginPageStyles.loginContainer}>
+    <KeyboardAvoidingView
+      style={LoginPageStyles.loginContainer}
+      {...(Platform.OS === 'ios' && {behavior: 'padding'})}>
       <StatusBar
         barStyle="dark-content"
         backgroundColor={theme.palette.backgroundGrey}
@@ -54,6 +56,7 @@ const LoginPage = ({
           value={credentials.password}
           placeholder={t('Password')}
           onChangeText={onCredentialsChange('password')}
+          type="password"
         />
         {/* <SemiBoldText style={LoginPageStyles.forgotYourPassword}>
           {t('forgotYourPassword')}
@@ -74,7 +77,7 @@ const LoginPage = ({
           </BoldText>
         </View>
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 

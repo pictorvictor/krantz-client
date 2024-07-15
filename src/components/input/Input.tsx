@@ -15,6 +15,7 @@ const Input = React.forwardRef(
       multiline,
       numberOfLines,
       scrollEnabled,
+      type,
     }: {
       value?: string;
       onChangeText?: (text: string) => void;
@@ -24,6 +25,7 @@ const Input = React.forwardRef(
       multiline?: boolean;
       numberOfLines?: number;
       scrollEnabled?: boolean;
+      type?: string;
     },
     ref: LegacyRef<TextInput>,
   ) => (
@@ -39,6 +41,7 @@ const Input = React.forwardRef(
       blurOnSubmit={multiline}
       scrollEnabled={scrollEnabled}
       ref={ref}
+      {...(type === 'password' && {secureTextEntry: true})}
     />
   ),
 );
