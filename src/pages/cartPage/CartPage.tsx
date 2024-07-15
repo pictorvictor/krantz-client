@@ -1,29 +1,24 @@
+import {useNavigation} from '@react-navigation/native';
+import {t} from 'i18next';
+import {observer} from 'mobx-react-lite';
+import React, {useState} from 'react';
+import {ScrollView, StatusBar, View} from 'react-native';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {
   BoldText,
+  Button,
+  Input,
   MealComponent,
   RadioGroup,
   SemiBoldText,
   Text,
-  Button,
-  Input,
 } from '../../components';
-import {
-  KeyboardAvoidingView,
-  Platform,
-  ScrollView,
-  StatusBar,
-  View,
-} from 'react-native';
-import {CartPageStyles} from './styles';
 import {useStores} from '../../hooks/useStores';
-import {observer} from 'mobx-react-lite';
-import {t} from 'i18next';
 import {CartItem} from '../../types/cart.types';
-import {enumToArray} from '../../utils/helpers';
 import {PaymentMethod, Route} from '../../utils/enums';
-import React, {useState} from 'react';
-import {useNavigation} from '@react-navigation/native';
+import {enumToArray} from '../../utils/helpers';
 import theme from '../../utils/theme';
+import {CartPageStyles} from './styles';
 
 const CartPage = observer(() => {
   const {cartStore} = useStores();
@@ -68,9 +63,7 @@ const CartPage = observer(() => {
   };
 
   return (
-    <KeyboardAvoidingView
-      {...(Platform.OS === 'ios' && {behavior: 'padding'})}
-      style={CartPageStyles.container}>
+    <KeyboardAwareScrollView contentContainerStyle={CartPageStyles.container}>
       <StatusBar
         barStyle="dark-content"
         backgroundColor={theme.palette.backgroundGrey}
@@ -131,7 +124,7 @@ const CartPage = observer(() => {
           </Button>
         )}
       </View>
-    </KeyboardAvoidingView>
+    </KeyboardAwareScrollView>
   );
 });
 

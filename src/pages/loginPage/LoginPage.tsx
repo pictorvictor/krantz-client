@@ -1,7 +1,8 @@
 import {StackScreenProps} from '@react-navigation/stack';
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
-import {KeyboardAvoidingView, Platform, StatusBar, View} from 'react-native';
+import {StatusBar, View} from 'react-native';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 import {BoldText, Button, Input, Logo, SemiBoldText} from '../../components';
 import {useStores} from '../../hooks/useStores';
@@ -34,9 +35,8 @@ const LoginPage = ({
   };
 
   return (
-    <KeyboardAvoidingView
-      style={LoginPageStyles.loginContainer}
-      {...(Platform.OS === 'ios' && {behavior: 'padding'})}>
+    <KeyboardAwareScrollView
+      contentContainerStyle={LoginPageStyles.loginContainer}>
       <StatusBar
         barStyle="dark-content"
         backgroundColor={theme.palette.backgroundGrey}
@@ -77,7 +77,7 @@ const LoginPage = ({
           </BoldText>
         </View>
       </View>
-    </KeyboardAvoidingView>
+    </KeyboardAwareScrollView>
   );
 };
 
