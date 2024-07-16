@@ -26,10 +26,13 @@ export class OrderStore {
 
   @action async reviewOrder(orderId: number, rating: number) {
     try {
-      axios.post('api/order/review', {
+      const {data} = await axios.post('api/order/review', {
         orderId,
         rating,
       });
+      if (data.status === 200) {
+        return;
+      }
     } catch (e: any) {
       console.error(e.message);
     }
